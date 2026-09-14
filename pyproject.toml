@@ -76,6 +76,13 @@ exclude = [
   "^src/briscola_ai\\.egg-info/",
 ]
 
+[tool.setuptools.package-data]
+# Includi asset statici (UI) e modelli nel pacchetto installato, necessario per deploy cloud.
+briscola_ai = [
+    "frontend/static/**/*",
+    "frontend/static/*",
+]
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"

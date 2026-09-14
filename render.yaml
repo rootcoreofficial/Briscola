@@ -2,7 +2,7 @@ services:
   - type: web
     name: briscola-ai
     runtime: python
-    buildCommand: pip install .
+    buildCommand: pip install -e .
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
