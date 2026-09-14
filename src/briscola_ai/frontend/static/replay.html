@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Briscola AI">
+    <meta name="description" content="Assistente touch essenziale per registrare una Briscola fisica e ricevere un consiglio.">
+    <link rel="manifest" href="./manifest.webmanifest?v=__BRISCOLA_ASSET_VERSION__">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png?v=__BRISCOLA_ASSET_VERSION__">
+    <title>Assistente Briscola</title>
+    <link rel="stylesheet" href="./css/replay.css?v=__BRISCOLA_ASSET_VERSION__">
+</head>
+<body class="replay-page">
+    <main id="gesture-surface" class="gesture-surface" tabindex="0" aria-describedby="replay-status replay-detail">
+        <section class="replay-content" aria-live="polite">
+            <p id="replay-status" class="replay-status">Inserisci la prima delle tue tre carte.</p>
+            <p id="replay-detail" class="replay-detail">Swipe per il seme, poi inserisci il valore.</p>
+
+            <section id="entered-card-section" class="card-section hidden" aria-labelledby="entered-card-label">
+                <p id="entered-card-label" class="card-label">Carta inserita</p>
+                <output id="replay-card" class="replay-card" aria-label="Carta inserita"></output>
+            </section>
+
+            <section id="advice-card-section" class="card-section hidden" aria-labelledby="advice-card-label">
+                <p id="advice-card-label" class="card-label">Carta consigliata</p>
+                <output id="advice-card" class="replay-card" aria-label="Carta consigliata"></output>
+            </section>
+
+            <p id="replay-confirmation" class="replay-confirmation hidden" role="status"></p>
+        </section>
+    </main>
+    <script src="./js/replay.js?v=__BRISCOLA_ASSET_VERSION__"></script>
+</body>
+</html>

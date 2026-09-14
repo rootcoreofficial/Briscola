@@ -1,0 +1,44 @@
+{
+  "schema": "briscola.belief_roster.v1",
+  "description": "Roster mirror congelato per belief v1: v14 dominante, anchor ML ed euristiche con stili differenti.",
+  "items": [
+    {
+      "id": "v14",
+      "agent": "bc_model",
+      "model_path": "data/models/best_a2c_v14.npz",
+      "weight": 4
+    },
+    {
+      "id": "v13",
+      "agent": "bc_model",
+      "model_path": "data/models/best_a2c_v13.npz",
+      "weight": 2
+    },
+    {
+      "id": "v11_anchor",
+      "agent": "bc_model",
+      "model_path": "data/models/best_a2c_v11.npz",
+      "weight": 1
+    },
+    {
+      "id": "heuristic_v1",
+      "agent": "heuristic_v1",
+      "weight": 1
+    },
+    {
+      "id": "heuristic_v2",
+      "agent": "heuristic_v2",
+      "weight": 1
+    },
+    {
+      "id": "trump_saver",
+      "agent": "heuristic_trump_saver",
+      "weight": 1
+    },
+    {
+      "id": "random",
+      "agent": "random",
+      "weight": 1
+    }
+  ]
+}

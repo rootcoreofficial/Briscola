@@ -1,0 +1,19 @@
+{
+  "name": "briscola-ai-mobile",
+  "private": true,
+  "version": "0.39.0",
+  "description": "Contenitore Android dell'assistente Briscola AI.",
+  "scripts": {
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android",
+    "android:debug": "cd android && gradlew.bat assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/core": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0"
+  }
+}

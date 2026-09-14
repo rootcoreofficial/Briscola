@@ -1,0 +1,61 @@
+__pycache__/
+*.py[cod]
+*.pyd
+
+# IDE/editor
+.idea/
+.DS_Store
+
+.venv/
+.tmp/
+node_modules/
+android/.gradle/
+android/build/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.playwright-mcp/
+.coverage
+coverage.xml
+coverage.svg
+
+# Runtime data (SQLite event log, exports, ecc.) — tutta locale TRANNE gli asset ufficiali
+# piccoli usati dal sito: committati apposta, così finiscono nell'immagine
+# di deploy e il cold start non li riscarica (il provisioning li trova e verifica lo SHA).
+# Alla promozione di un nuovo best, committare anche il suo `.npz` (tenerlo piccolo:
+# `--metrics-mode summary`).
+data/*
+!data/models/
+data/models/*
+!data/models/best_a2c_v10.npz
+!data/models/best_a2c_v11.npz
+!data/models/best_a2c_v13.npz
+!data/models/best_a2c_v14.npz
+!data/models/best_a2c_v15.npz
+!data/models/value_v0_h128_clean50k_seed20260701.npz
+!data/models/belief_v0_h128_50k_seed20260702.npz
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+~$*.xlsx
+
+# Local benchmark outputs
+benchmarks/
+
+*.egg-info/
+build/
+dist/
+
+# Scratch locali in root (bozze di piano, appunti di lavoro non ufficiali)
+tmp/
+PLAN_*_DRAFT.md
+
+# Config locale degli agenti CLI (comandi/preferenze personali)
+.claude/
+
+# Symlink locale ad AGENTS.md (non versionato)
+CLAUDE.md
+
+# FastAPI Cloud (link locale all-app, non versionare)
+.fastapicloud/

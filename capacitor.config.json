@@ -1,0 +1,13 @@
+{
+  "appId": "dev.briscola.ai",
+  "appName": "Assistente Briscola",
+  "webDir": "src/briscola_ai/frontend/static",
+  "android": {
+    "backgroundColor": "#000000"
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

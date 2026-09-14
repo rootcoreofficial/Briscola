@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-12",
+  "decision": "Promosso come best_a2c_v14 nella release 0.36.0",
+  "dataset": {
+    "path_local": "data/distillation/suit_teacher_v13_10k_seed20260711.npz",
+    "sha256": "cdcfb37ec20b32deb76fa785e118c1083a60d6e7cc8dba474787eec6ec443275",
+    "num_games": 10000,
+    "num_examples": 380000,
+    "split_unit": "game",
+    "split_games": {"train": 8000, "validation": 1000, "test": 1000},
+    "seed": 20260711,
+    "bytes": 32547075,
+    "generation_seconds": 70.53598550001334,
+    "save_seconds": 5.694115750011406,
+    "opponent_game_counts": {
+      "mirror": 4905,
+      "heuristic_trump_saver": 2040,
+      "heuristic_v1": 1572,
+      "heuristic_v2": 998,
+      "random": 485
+    }
+  },
+  "candidate": {
+    "path_local": "data/models/suit_distilled_v0_10k_seed20260711.npz",
+    "sha256": "a837b3b9994a307bf58403797d4c72c7f038678c47c8ec2eef2fc8cb12c4cce5",
+    "bytes": 424740,
+    "training_seconds": 6.0104081250028685,
+    "best_epoch": 5,
+    "test_before": {"kl": 0.6193184851651488, "argmax_agreement": 0.8683157894736843},
+    "test_after": {"kl": 0.16860758934564543, "argmax_agreement": 0.9287631578947368}
+  },
+  "no_augmentation_control": {
+    "test_kl": 0.196350,
+    "test_argmax_agreement": 0.9229,
+    "paired_minus_control_points": 0.0846,
+    "paired_minus_control_ci95": [-0.11, 0.28]
+  },
+  "suit_symmetry": {
+    "observations": 4096,
+    "nonidentity_comparisons": 94208,
+    "flip_rate": 0.10233738111413043,
+    "flip_ci95": [0.09613780146059728, 0.10872776197350467],
+    "mean_js_bits": 0.06143454662530617,
+    "any_flip_observation_rate": 0.313720703125,
+    "mean_top2_gap": 0.9093303184097209
+  },
+  "seat_fair_medium": {
+    "num_games": 10000,
+    "suite": "seed_suites/medium_5000.txt",
+    "matches": [
+      {"opponent": "best_a2c_v13", "avg_point_diff": 0.5132, "ci95": [0.11, 0.92]},
+      {"opponent": "v13_symmetrized_24x", "avg_point_diff": -0.2312, "ci95": [-0.59, 0.13]},
+      {"opponent": "heuristic_v1", "avg_point_diff": 22.0098, "ci95": [21.47, 22.55]},
+      {"opponent": "heuristic_trump_saver", "avg_point_diff": 15.5678, "ci95": [15.05, 16.09]}
+    ]
+  },
+  "decision_quality_medium_vs_heuristic_v1": {
+    "num_games": 10000,
+    "trump_waste_rate": 0.0007993024269728237,
+    "trump_overkill_rate": 0.21857621770853874,
+    "low_lead_overkill_rate": 0.05505831299159208
+  },
+  "extension_50k": {
+    "dataset": {
+      "path_local": "data/distillation/suit_teacher_v13_50k_seed20260712.npz",
+      "sha256": "87673a305615d2ced4cb016f7fd26fc44e061803d030101857e20e09e4b8ec30",
+      "num_games": 50000,
+      "num_examples": 1900000,
+      "split_games": {"train": 40000, "validation": 5000, "test": 5000},
+      "bytes": 162757578,
+      "generation_seconds": 341.74768170800235,
+      "save_seconds": 27.569190458001685
+    },
+    "candidate": {
+      "path_local": "data/models/suit_distilled_v0_50k_seed20260712.npz",
+      "sha256": "c413a704fff42838714baff791f706d6fe4f008e77ea86c750b0c2770d445cec",
+      "bytes": 424692,
+      "training_seconds": 30.497121791006066,
+      "best_epoch": 5,
+      "test_before": {"kl": 0.626825278640538, "argmax_agreement": 0.8650947368421052},
+      "test_after": {"kl": 0.06633231871648775, "argmax_agreement": 0.9539}
+    },
+    "official_asset": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "bytes": 429388,
+      "weights_identical_to_candidate": true,
+      "promotion_version": "0.36.0"
+    },
+    "suit_symmetry": {
+      "observations": 4096,
+      "nonidentity_comparisons": 94208,
+      "flip_rate": 0.06035580842391304,
+      "flip_ci95": [0.055344822095787935, 0.06519722316576074],
+      "mean_js_bits": 0.028673878949479214,
+      "any_flip_observation_rate": 0.19775390625,
+      "mean_top2_gap": 0.9046142268874019
+    },
+    "seat_fair_medium": {
+      "num_games": 10000,
+      "matches": [
+        {"opponent": "best_a2c_v13", "avg_point_diff": 0.6626, "ci95": [0.24, 1.09]},
+        {"opponent": "v13_symmetrized_24x", "avg_point_diff": -0.2218, "ci95": [-0.53, 0.09]},
+        {"opponent": "distilled_10k", "avg_point_diff": 0.162, "ci95": [-0.16, 0.48]},
+        {"opponent": "heuristic_v1", "avg_point_diff": 22.0978, "ci95": [21.56, 22.64]},
+        {"opponent": "heuristic_trump_saver", "avg_point_diff": 15.7778, "ci95": [15.26, 16.30]}
+      ]
+    },
+    "homogeneous_big_vs_heuristic_v1": {
+      "num_games": 100000,
+      "engine": "numba",
+      "seed_range": [0, 49999],
+      "avg_point_diff": 21.75808,
+      "ci95": [21.59, 21.93],
+      "wins": 77417,
+      "losses": 20561,
+      "draws": 2022
+    },
+    "decision_quality_medium_vs_heuristic_v1": {
+      "trump_waste_rate": 0.0007389908534738628,
+      "trump_overkill_rate": 0.21773717166148152,
+      "low_lead_overkill_rate": 0.04172423321359492
+    },
+    "pimc_belief_16x8_small_vs_v13": {
+      "num_games": 2000,
+      "avg_point_diff": 0.346,
+      "ci95": [-0.53, 1.22],
+      "wins": 976,
+      "losses": 960,
+      "draws": 64
+    },
+    "pimc_belief_16x8_medium_vs_v13": {
+      "num_games": 10000,
+      "seed_suite": "seed_suites/medium_5000.txt",
+      "avg_point_diff": 0.4342,
+      "ci95": [0.03, 0.84],
+      "score_rate": 0.5089,
+      "score_rate_ci95": [0.5007, 0.5171],
+      "wins": 4936,
+      "losses": 4758,
+      "draws": 306
+    }
+  }
+}

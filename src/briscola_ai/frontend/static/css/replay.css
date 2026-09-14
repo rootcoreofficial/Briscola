@@ -1,0 +1,104 @@
+/*
+ * Schermata da tavolo: l'utente deve poter leggere il suggerimento con una
+ * sola occhiata mentre distribuisce o gioca carte fisiche. Per questo non ci
+ * sono pannelli, statistiche o cromie di stato: il contrasto e' solo bianco
+ * su nero, anche nella barra di sistema di un telefono.
+ */
+:root {
+    color-scheme: dark;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background: #000;
+}
+
+.replay-page {
+    min-height: 100dvh;
+    color: #fff;
+}
+
+.gesture-surface {
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem max(1.5rem, env(safe-area-inset-bottom));
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+}
+
+.replay-content {
+    display: grid;
+    justify-items: center;
+    width: min(100%, 34rem);
+    text-align: center;
+}
+
+.replay-status {
+    margin: 0;
+    font-size: clamp(1.4rem, 6vw, 2.35rem);
+    font-weight: 750;
+    letter-spacing: -.025em;
+    line-height: 1.16;
+}
+
+.replay-detail {
+    max-width: 32rem;
+    margin: 1rem 0 0;
+    color: #d4d4d4;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    line-height: 1.45;
+}
+
+.card-section {
+    width: 100%;
+    margin-top: clamp(2.5rem, 10vh, 5rem);
+}
+
+.card-label {
+    margin: 0 0 .65rem;
+    color: #b3b3b3;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.replay-card {
+    display: block;
+    min-height: 1.2em;
+    color: #fff;
+    font-size: clamp(2.7rem, 13vw, 5.25rem);
+    font-weight: 850;
+    letter-spacing: -.055em;
+    line-height: .96;
+}
+
+.replay-confirmation {
+    margin: clamp(2rem, 8vh, 4rem) 0 0;
+    color: #fff;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.gesture-surface.is-thinking .replay-status,
+.gesture-surface.is-error .replay-status {
+    color: #fff;
+}
+
+.hidden {
+    display: none !important;
+}

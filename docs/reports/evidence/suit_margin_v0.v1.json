@@ -1,0 +1,84 @@
+{
+  "schema": "suit_margin_ablation_v1",
+  "date": "2026-07-11",
+  "code": {
+    "base_commit": "027c99a",
+    "worktree_dirty": true,
+    "code_version": "0.35.1"
+  },
+  "protocol": {
+    "warm_start": "data/models/best_a2c_v13.npz",
+    "training_games_per_model": 10000,
+    "training_seeds": [20260711, 20260712, 20260713],
+    "betas": [0.001, 0.01, 0.1, 0.3, 1.0],
+    "margin_cap": 2.0,
+    "loss": "hinge on permuted teacher argmax and capped teacher logit margin",
+    "forced_actions": "excluded",
+    "symmetry_observations_per_model": 4096,
+    "strength_games_per_match": 10000,
+    "beta_zero_artifact_identical_to_previous_trainer": true
+  },
+  "symmetry": {
+    "control": {
+      "mean_flip_rate": 0.1831726958786232,
+      "mean_js_bits": 0.14123838258721264,
+      "mean_top2_gap": 0.9285115390713687
+    },
+    "beta_0_001": {
+      "mean_flip_rate": 0.1827905627264493,
+      "mean_js_bits": 0.13997521845744956,
+      "mean_top2_gap": 0.9275271772558167
+    },
+    "beta_0_01": {
+      "mean_flip_rate": 0.17321246603260873,
+      "mean_js_bits": 0.12814697065554412,
+      "mean_top2_gap": 0.9208229311981433
+    },
+    "beta_0_1": {
+      "mean_flip_rate": 0.1492194576539855,
+      "mean_js_bits": 0.10128391709869873,
+      "mean_top2_gap": 0.9127713234499671
+    },
+    "beta_0_3": {
+      "flip_rate_by_seed": [0.14598547894021738, 0.13796068274456522, 0.14862856657608695],
+      "mean_flip_rate": 0.1441915760869565,
+      "mean_js_bits": 0.0975618863262353,
+      "mean_any_flip_observation_rate": 0.4232584635416667,
+      "mean_top2_gap": 0.9145232694660222
+    },
+    "beta_1_0": {
+      "flip_rate_by_seed": [0.1470681895380435, 0.13813051970108695, 0.14955205502717392],
+      "mean_flip_rate": 0.14491692142210144,
+      "mean_js_bits": 0.09747276495357811,
+      "mean_any_flip_observation_rate": 0.4244791666666667,
+      "mean_top2_gap": 0.9146566327818775
+    }
+  },
+  "strength": {
+    "beta_0_3_vs_same_seed_control": {
+      "avg_point_diff_by_seed": [0.3502, -0.121, 0.4546],
+      "mean_avg_point_diff": 0.22793333333333332
+    },
+    "beta_0_3_vs_v13": {
+      "avg_point_diff_by_seed": [-0.0858, -0.3678, 0.048],
+      "mean_avg_point_diff": -0.13520000000000001,
+      "all_seed_ci95_include_zero": true
+    }
+  },
+  "decision": {
+    "status": "stop",
+    "selected_beta": 0.3,
+    "promote_model": false,
+    "run_longer": false,
+    "run_pimc_gate": false,
+    "next_ablation": "exact 24-permutation policy symmetrization"
+  },
+  "artifact_sha256": {
+    "beta0300_seed20260711": "52ccc7598502cdd8a05bf7e9d64b565c47438548cf575529739644de7d7401c8",
+    "beta0300_seed20260712": "1aa68b15e3f7b9f1cb822c964bde2ae9b9cdb98afed27b44ee12f3352420f51c",
+    "beta0300_seed20260713": "01dbe7a8d75ebaa788d3f72bb9b090c190acd4f9015ad82d4fc93b983a99d330",
+    "beta1000_seed20260711": "633372c5413ae27e68bde3ab767054e2447a6c5a416467c16e048350de20921d",
+    "beta1000_seed20260712": "0b6ef0ee5b3a26a4b745dfdffb41e94ac2582e6e674a87a6dbcfcfee26fff44e",
+    "beta1000_seed20260713": "bb2cbe778453ccf06e2cfb9d151d0b180c76eddda48d48c8ba05d0fedbac047d"
+  }
+}

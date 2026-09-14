@@ -1,0 +1,110 @@
+{
+  "schema": "suit_consistency_ablation_v1",
+  "date": "2026-07-11",
+  "code": {
+    "base_commit": "63f4632",
+    "worktree_dirty": true,
+    "code_version": "0.35.1"
+  },
+  "protocol": {
+    "warm_start": "data/models/best_a2c_v13.npz",
+    "training_games_per_model": 10000,
+    "training_seeds": [20260711, 20260712, 20260713],
+    "betas": [0.001, 0.01, 0.1],
+    "target": "stop-gradient original policy distribution",
+    "loss": "forward KL on one uniform nonidentity suit permutation per trajectory",
+    "symmetry_observations_per_model": 4096,
+    "strength_games_per_match": 10000,
+    "strength_suite": "medium seat-fair",
+    "beta_zero_artifact_identical_to_previous_trainer": true
+  },
+  "symmetry": {
+    "control_mean": {
+      "identity_flip_rate": 0.1831726958786232,
+      "identity_mean_js_bits": 0.14123838258721264,
+      "any_flip_observation_rate": 0.5120442708333334
+    },
+    "beta_0_001": {
+      "identity_flip_rate_by_seed": [0.17839249320652173, 0.1788595448369565, 0.18263841711956522],
+      "mean_identity_flip_rate": 0.1799634850543478,
+      "mean_identity_js_bits": 0.13903476239071952,
+      "mean_any_flip_observation_rate": 0.50830078125
+    },
+    "beta_0_01": {
+      "identity_flip_rate_by_seed": [0.17404042119565216, 0.17607846467391305, 0.17237389605978262],
+      "mean_identity_flip_rate": 0.17416426064311594,
+      "mean_identity_js_bits": 0.12940310166949223,
+      "mean_any_flip_observation_rate": 0.4922688802083333
+    },
+    "beta_0_1": {
+      "identity_flip_rate_by_seed": [0.15678074048913043, 0.158935546875, 0.15362814198369565],
+      "mean_identity_flip_rate": 0.15644814311594202,
+      "mean_identity_js_bits": 0.10402487398903805,
+      "mean_any_flip_observation_rate": 0.4493815104166667
+    }
+  },
+  "strength": {
+    "beta_0_001_vs_same_seed_control": {
+      "avg_point_diff_by_seed": [0.146, -0.0314, -0.0512],
+      "mean_avg_point_diff": 0.021133333333333327
+    },
+    "beta_0_01_vs_same_seed_control": {
+      "avg_point_diff_by_seed": [0.1414, 0.0322, 0.113],
+      "mean_avg_point_diff": 0.09553333333333335
+    },
+    "beta_0_1_vs_same_seed_control": {
+      "avg_point_diff_by_seed": [0.2048, 0.4002, 0.2178],
+      "mean_avg_point_diff": 0.27426666666666666
+    },
+    "beta_0_1_vs_v13": {
+      "avg_point_diff_by_seed": [-0.1392, 0.0064, -0.1066],
+      "mean_avg_point_diff": -0.0798,
+      "all_seed_ci95_include_zero": true
+    }
+  },
+  "decision": {
+    "status": "stop_after_intermediate",
+    "selected_beta": 0.1,
+    "promote_model": false,
+    "run_pimc_gate": false,
+    "next_ablation": "margin-aware suit consistency"
+  },
+  "intermediate_followup": {
+    "checkpoints": {
+      "30000": {
+        "mean_identity_flip_rate": 0.15455870697463767,
+        "mean_identity_js_bits": 0.08656428023938771,
+        "mean_any_flip_observation_rate": 0.4420572916666667,
+        "mean_top2_gap": 0.8642666274876207,
+        "mean_point_diff_vs_v13": -0.0228
+      },
+      "50000": {
+        "mean_identity_flip_rate": 0.16469938858695654,
+        "mean_identity_js_bits": 0.07605020890853546,
+        "mean_any_flip_observation_rate": 0.4715983072916667,
+        "mean_top2_gap": 0.801553339293069,
+        "mean_point_diff_vs_v13": -0.7682000000000001,
+        "all_seed_ci95_exclude_zero_negatively": true
+      }
+    },
+    "artifact_sha256": {
+      "seed20260711_30k": "d013da16babadeff6fc876984b74583f7327f94c6db6372c92148a0cd1c72099",
+      "seed20260711_50k": "ea651982b7773e3e48c0a4087ad760414d6be2af0d8aa9f2b06d021555d8b5c0",
+      "seed20260712_30k": "f84d93e0e34da9bd5fe5804446e3c945466991642dc5bb1b76784a049829242a",
+      "seed20260712_50k": "c788613644fce080bdc3134ff55f79e69c157cc4ed13006a11fb4cbb09d7d9f0",
+      "seed20260713_30k": "8221cbb989f42243e81bf6e850b49bb3391e79cc412f90ed232c40437a2cb03e",
+      "seed20260713_50k": "541698119dc3941ac4356f220f5a7a34bab5c051adec56ec096cf355e2e35875"
+    }
+  },
+  "artifact_sha256": {
+    "beta0001_seed20260711": "d54c96d49600cce0dacde895f022f191dc14a4168994dc61b6e7efa7e19eaa08",
+    "beta0001_seed20260712": "973900a4e35d52330c07e66d7ab63b86318ba8162c69b059f1c4bce1e483a881",
+    "beta0001_seed20260713": "15b147ae70e1ecff4180cd955e5adf0d0a742ccef7e8bde87691f16d15a55c99",
+    "beta0010_seed20260711": "3f214fee635a08a2a4ec4593a2d9ecba839ec4b4efd8a8a3dd84e21b37c21164",
+    "beta0010_seed20260712": "d198b7fda35160d3df11992e62c513c862be6997db2dc53197a6bc21fee407e1",
+    "beta0010_seed20260713": "18a9546048e9591f88d7b6536607215b972e1eb22f36b162e34b37b5f8a3e430",
+    "beta0100_seed20260711": "38e996ea9607b46533d0dc89d4756af6903d18d8bd5618671b2c1892beafc724",
+    "beta0100_seed20260712": "c146cac513ff3022190e824cf203ee0d91a02ce33d74f0f3f606e93143fc636b",
+    "beta0100_seed20260713": "ef3f63a79c5c0d2e7f179dc2e21f8790a44e2bcd734ea8145b98b264301472cd"
+  }
+}

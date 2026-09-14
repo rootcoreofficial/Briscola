@@ -1,0 +1,226 @@
+{
+  "artifacts": {
+    "baseline": {
+      "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "dataset": {
+      "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/belief_v1_multistyle_g66000_seed20260714.npz",
+      "sha256": "1a3b26440747b59f6418e2cfa4df46851a0c044420d33cc32e7f2fa231c49cb6",
+      "size_bytes": 31523129
+    },
+    "fold_models": [
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_v14_g66000_seed20260714.npz",
+        "sha256": "7fd16aedf77136b73179c406089e550fcb403d691d777d43279bae7f67a0fc77",
+        "size_bytes": 227852
+      },
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_v13_g66000_seed20260714.npz",
+        "sha256": "8ee55db38d0a105650b5c0bfb260ddaf84259b857400ec9579edadf3ff00c830",
+        "size_bytes": 227828
+      },
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_v11_anchor_g66000_seed20260714.npz",
+        "sha256": "a78fe99359d24fdd79b71b09dc858074e8506becba59904d2128b7f217b66d7b",
+        "size_bytes": 227884
+      },
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_heuristic_v1_g66000_seed20260714.npz",
+        "sha256": "7d5e3f66f198c985f2ffcb36219704d60bfa35d1725cf6dd1a9ebdf6a3b6230c",
+        "size_bytes": 227936
+      },
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_heuristic_v2_g66000_seed20260714.npz",
+        "sha256": "49561e67777b315bfa2184a3f6cac175ad9b81847d28765f11f5fc7fc518fcce",
+        "size_bytes": 227932
+      },
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_trump_saver_g66000_seed20260714.npz",
+        "sha256": "1bc51dd49ebfe637fdc955dac22362c78fd6ab749f0427532955c8837015b6c5",
+        "size_bytes": 227928
+      },
+      {
+        "path": "/Users/marcolerco/Projects/ai/briscola.ai/data/belief/belief_v1_gate_20260714/folds/belief_v1_holdout_random_g66000_seed20260714.npz",
+        "sha256": "ad08402f052b0ba4620b7ca9ede19af0c1bb2df7a42dd43801050f0301f79381",
+        "size_bytes": 227840
+      }
+    ]
+  },
+  "decision": {
+    "note_it": "Il GO autorizza solo candidato all-styles e A/B PIMC v0-v1; nessuna promozione.",
+    "verdict": "go_train_all_styles_candidate"
+  },
+  "folds": {
+    "heuristic_v1": {
+      "baseline": {
+        "bce": 0.5583953652413024,
+        "brier": 0.18834285494874684,
+        "ece": 0.050188904417289806,
+        "topk_recall": 0.5459019607843137
+      },
+      "bce_relative_change_candidate_minus_baseline": -0.15692714489118276,
+      "candidate": {
+        "bce": 0.4707679748535156,
+        "brier": 0.15873676538467407,
+        "ece": 0.009574138335312097,
+        "topk_recall": 0.6345490196078432
+      }
+    },
+    "heuristic_v2": {
+      "baseline": {
+        "bce": 0.5596908144466868,
+        "brier": 0.18879260017117935,
+        "ece": 0.05088963631710458,
+        "topk_recall": 0.5445882352941176
+      },
+      "bce_relative_change_candidate_minus_baseline": -0.15494237154076218,
+      "candidate": {
+        "bce": 0.47297099232673645,
+        "brier": 0.15964996814727783,
+        "ece": 0.010818551391528273,
+        "topk_recall": 0.6305196078431372
+      }
+    },
+    "random": {
+      "baseline": {
+        "bce": 0.6177034794430669,
+        "brier": 0.2094879928410039,
+        "ece": 0.09015661731126026,
+        "topk_recall": 0.47199019607843135
+      },
+      "bce_relative_change_candidate_minus_baseline": -0.06507500408252248,
+      "candidate": {
+        "bce": 0.577506422996521,
+        "brier": 0.19964507222175598,
+        "ece": 0.05265150071939947,
+        "topk_recall": 0.4733627450980392
+      }
+    },
+    "trump_saver": {
+      "baseline": {
+        "bce": 0.5300807753629603,
+        "brier": 0.1760763769133688,
+        "ece": 0.032512821450638746,
+        "topk_recall": 0.5880588235294117
+      },
+      "bce_relative_change_candidate_minus_baseline": -0.12395485210726521,
+      "candidate": {
+        "bce": 0.46437469124794006,
+        "brier": 0.15586036443710327,
+        "ece": 0.006724749126197548,
+        "topk_recall": 0.6441372549019608
+      }
+    },
+    "v11_anchor": {
+      "baseline": {
+        "bce": 0.5219006372931373,
+        "brier": 0.17781465508064198,
+        "ece": 0.0353416074567825,
+        "topk_recall": 0.5588823529411765
+      },
+      "bce_relative_change_candidate_minus_baseline": -0.021030823093850532,
+      "candidate": {
+        "bce": 0.5109246373176575,
+        "brier": 0.1744246631860733,
+        "ece": 0.01739002752869544,
+        "topk_recall": 0.5647254901960784
+      }
+    },
+    "v13": {
+      "baseline": {
+        "bce": 0.5190018728240677,
+        "brier": 0.17669572195861175,
+        "ece": 0.033766023722983714,
+        "topk_recall": 0.5627352941176471
+      },
+      "bce_relative_change_candidate_minus_baseline": -0.014450516857794396,
+      "candidate": {
+        "bce": 0.5115020275115967,
+        "brier": 0.17460432648658752,
+        "ece": 0.018409570473607396,
+        "topk_recall": 0.5662794117647059
+      }
+    },
+    "v14": {
+      "baseline": {
+        "bce": 0.51335208645068,
+        "brier": 0.1747617738744522,
+        "ece": 0.030934382694172553,
+        "topk_recall": 0.5684044117647059
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.014455784460201456,
+      "candidate": {
+        "bce": 0.5207729935646057,
+        "brier": 0.17789943516254425,
+        "ece": 0.027074514984705117,
+        "topk_recall": 0.5574313725490196
+      }
+    }
+  },
+  "gates": {
+    "checks": {
+      "macro_bce_relative_improvement": true,
+      "macro_brier_non_regression": true,
+      "macro_ece_non_regression": true,
+      "macro_topk_non_regression": true,
+      "worst_fold_bce_regression": true
+    },
+    "thresholds": {
+      "max_macro_brier_delta": 0.0,
+      "max_macro_ece_delta": 0.0,
+      "max_worst_fold_bce_relative_regression": 0.02,
+      "min_macro_bce_relative_improvement": 0.01,
+      "min_macro_topk_delta": 0.0
+    }
+  },
+  "macro": {
+    "baseline": {
+      "bce": 0.5457321472945573,
+      "brier": 0.18456742511257213,
+      "ece": 0.0462557133386046,
+      "topk_recall": 0.5486516106442577
+    },
+    "bce_relative_improvement": 0.07625543375535872,
+    "candidate": {
+      "bce": 0.5041171056883675,
+      "brier": 0.1715457992894309,
+      "ece": 0.02037757893706362,
+      "topk_recall": 0.5815721288515406
+    },
+    "delta_candidate_minus_baseline": {
+      "bce": -0.041615041606189784,
+      "brier": -0.01302162582314123,
+      "ece": -0.025878134401540978,
+      "topk_recall": 0.03292051820728292
+    },
+    "worst_fold_bce_relative_regression": 0.014455784460201456
+  },
+  "pilot": false,
+  "roster": {
+    "artifact": {
+      "path": "/Users/marcolerco/Projects/ai/briscola.ai/docs/plans/belief-v1-roster-2026-07-14.json",
+      "sha256": "20c85eced3ab66188ccae77fb83ee83bd8b3f9df93d6ede092e8dfdb71b1c0d8",
+      "size_bytes": 931
+    },
+    "folds": 7,
+    "opponent_ids": [
+      "v14",
+      "v13",
+      "v11_anchor",
+      "heuristic_v1",
+      "heuristic_v2",
+      "trump_saver",
+      "random"
+    ]
+  },
+  "schema": "briscola.belief_leave_one_out.v1",
+  "versions": {
+    "code": "0.36.0",
+    "git_commit": "60801ead552a494d5d41e9271090bbdef422b176",
+    "numpy": "2.4.6",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "artifacts": {
+    "baseline": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "dataset": {
+      "path": "data/belief/belief_v1_multistyle_pilot_770_seed20260714.npz",
+      "sha256": "96b5ac03c2c780631a8e5e1d12600b1123cc8c0044507a8e68fc6d004a747f6e",
+      "size_bytes": 370746
+    },
+    "fold_models": [
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_v14_seed20260714.npz",
+        "sha256": "db3c30928b1d8466ab23388067ed00e41a4dc88eb734701a7c411b080bb4e08e",
+        "size_bytes": 227104
+      },
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_v13_seed20260714.npz",
+        "sha256": "11c6a262c6fd9b5697ee2e1bca693a066c0a2e3c3a764c4f7b1fd9d19ed913ed",
+        "size_bytes": 227080
+      },
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_v11_anchor_seed20260714.npz",
+        "sha256": "f780c64bf1a247e07c5aafbb77e6973439f374e8cca7f5f07988a89d4e5c3022",
+        "size_bytes": 227152
+      },
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_heuristic_v1_seed20260714.npz",
+        "sha256": "d22d58b82c646e4eae4c7180029d4d66ee441b850ee0148abfb993f55732cfe2",
+        "size_bytes": 227188
+      },
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_heuristic_v2_seed20260714.npz",
+        "sha256": "a54e8824c85155fda583419ae87d4c8b5e1f7356115b7bf44406d5ace96f15bc",
+        "size_bytes": 227164
+      },
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_trump_saver_seed20260714.npz",
+        "sha256": "f15131b4362b22bfc0d56e7d4218dcf51c752b5c4e7c410c1de0b55b9069c4cd",
+        "size_bytes": 227168
+      },
+      {
+        "path": "data/belief/belief_v1_pilot_holdout_random_seed20260714.npz",
+        "sha256": "aba7c9afe0381e95e7d65a10ed451fc1d3631625edb29bad9233f14c1a75e09a",
+        "size_bytes": 227100
+      }
+    ]
+  },
+  "decision": {
+    "note_it": "Il pilot verifica solo integrita' e metriche; non autorizza training finale o runtime A/B.",
+    "verdict": "pilot_pipeline_validated"
+  },
+  "folds": {
+    "heuristic_v1": {
+      "baseline": {
+        "bce": 0.5571983872897782,
+        "brier": 0.18576044131246783,
+        "ece": 0.049428036207468606,
+        "topk_recall": 0.5563025210084034
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.0392392997933758,
+      "candidate": {
+        "bce": 0.5790624618530273,
+        "brier": 0.19838635623455048,
+        "ece": 0.03284683985956035,
+        "topk_recall": 0.5605042016806723
+      }
+    },
+    "heuristic_v2": {
+      "baseline": {
+        "bce": 0.5695928231348703,
+        "brier": 0.19332638550202927,
+        "ece": 0.06209900823149235,
+        "topk_recall": 0.5243697478991597
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.023809213592252864,
+      "candidate": {
+        "bce": 0.5831543803215027,
+        "brier": 0.1995445340871811,
+        "ece": 0.04059921118265164,
+        "topk_recall": 0.573109243697479
+      }
+    },
+    "random": {
+      "baseline": {
+        "bce": 0.6341756626637877,
+        "brier": 0.2155977254610859,
+        "ece": 0.10120073415377769,
+        "topk_recall": 0.44789915966386556
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.018175971863989632,
+      "candidate": {
+        "bce": 0.6457024216651917,
+        "brier": 0.2265430986881256,
+        "ece": 0.04313012585478343,
+        "topk_recall": 0.4235294117647059
+      }
+    },
+    "trump_saver": {
+      "baseline": {
+        "bce": 0.5345153337266042,
+        "brier": 0.17511357309296788,
+        "ece": 0.03228324879702952,
+        "topk_recall": 0.5890756302521009
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.046127072691260956,
+      "candidate": {
+        "bce": 0.5591709613800049,
+        "brier": 0.18899457156658173,
+        "ece": 0.04896176302963025,
+        "topk_recall": 0.5823529411764706
+      }
+    },
+    "v11_anchor": {
+      "baseline": {
+        "bce": 0.5364312034147851,
+        "brier": 0.18304859671347104,
+        "ece": 0.04372443531917506,
+        "topk_recall": 0.5403361344537815
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.18482885550020833,
+      "candidate": {
+        "bce": 0.6355791687965393,
+        "brier": 0.2217126190662384,
+        "ece": 0.03957332177603556,
+        "topk_recall": 0.45714285714285713
+      }
+    },
+    "v13": {
+      "baseline": {
+        "bce": 0.5137236426281294,
+        "brier": 0.17432588959824094,
+        "ece": 0.02964889565052011,
+        "topk_recall": 0.5781512605042017
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.23898059275699676,
+      "candidate": {
+        "bce": 0.6364936232566833,
+        "brier": 0.22250431776046753,
+        "ece": 0.034345782782784696,
+        "topk_recall": 0.4542016806722689
+      }
+    },
+    "v14": {
+      "baseline": {
+        "bce": 0.5141486462637817,
+        "brier": 0.1749798294612271,
+        "ece": 0.02880818576410018,
+        "topk_recall": 0.5638655462184874
+      },
+      "bce_relative_change_candidate_minus_baseline": 0.23156156579029463,
+      "candidate": {
+        "bce": 0.6332057118415833,
+        "brier": 0.2208540439605713,
+        "ece": 0.03921876108333598,
+        "topk_recall": 0.47436974789915964
+      }
+    }
+  },
+  "gates": {
+    "checks": {
+      "macro_bce_relative_improvement": false,
+      "macro_brier_non_regression": false,
+      "macro_ece_non_regression": true,
+      "macro_topk_non_regression": false,
+      "worst_fold_bce_regression": false
+    },
+    "thresholds": {
+      "max_macro_brier_delta": 0.0,
+      "max_macro_ece_delta": 0.0,
+      "max_worst_fold_bce_relative_regression": 0.02,
+      "min_macro_bce_relative_improvement": 0.01,
+      "min_macro_topk_delta": 0.0
+    }
+  },
+  "macro": {
+    "baseline": {
+      "bce": 0.551397957017391,
+      "brier": 0.18602177730592714,
+      "ece": 0.04959893487479479,
+      "topk_recall": 0.5428571428571429
+    },
+    "bce_relative_improvement": -0.10689272984421783,
+    "candidate": {
+      "bce": 0.6103383898735046,
+      "brier": 0.21121993448053086,
+      "ece": 0.03981082936696884,
+      "topk_recall": 0.5036014405762305
+    },
+    "delta_candidate_minus_baseline": {
+      "bce": 0.05894043285611361,
+      "brier": 0.02519815717460372,
+      "ece": -0.009788105507825946,
+      "topk_recall": -0.03925570228091246
+    },
+    "worst_fold_bce_relative_regression": 0.23898059275699676
+  },
+  "pilot": true,
+  "roster": {
+    "artifact": {
+      "path": "docs/plans/belief-v1-roster-2026-07-14.json",
+      "sha256": "20c85eced3ab66188ccae77fb83ee83bd8b3f9df93d6ede092e8dfdb71b1c0d8",
+      "size_bytes": 931
+    },
+    "folds": 7,
+    "opponent_ids": [
+      "v14",
+      "v13",
+      "v11_anchor",
+      "heuristic_v1",
+      "heuristic_v2",
+      "trump_saver",
+      "random"
+    ]
+  },
+  "schema": "briscola.belief_leave_one_out.v1",
+  "versions": {
+    "code": "0.36.0",
+    "git_commit": "414312c79eb5f77f273d01209c9650e057cd2d7d",
+    "numpy": "2.4.6",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

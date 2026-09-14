@@ -1,0 +1,921 @@
+{
+  "artifacts": {
+    "belief_model": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "inputs": [
+      {
+        "path": "data/prod_live_actions_v13.jsonl",
+        "sha256": "07dcb8bd28b5ba756d87646ce0f74140af34bba7d7ad6ba3ba36e5e6d4083086",
+        "size_bytes": 17334601
+      },
+      {
+        "path": "data/prod_live_actions_v14.jsonl",
+        "sha256": "81b60e2d6f81236e51818ec7c130c75884c726acfde4d6693fa6f0d3311b7947",
+        "size_bytes": 3235943
+      }
+    ],
+    "model_a": {
+      "path": "data/models/best_a2c_v13.npz",
+      "sha256": "5b1c6ea0bca7fd2c868e01d4d583cbc5df7bbef2ab86bbb3ded4b18b14c9f1cf",
+      "size_bytes": 437872
+    },
+    "model_b": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    }
+  },
+  "choice_quality": {
+    "by_human_outcome": {
+      "policy_a": {
+        "ai_win": {
+          "lead_decisions": 988,
+          "lead_load": 137,
+          "lead_load_rate": 0.13866396761133604,
+          "lead_load_with_smooth_alternative": 58,
+          "second_hand_decisions": 988,
+          "second_hand_with_winning_reply": 814,
+          "trump_overkill": 51,
+          "trump_overkill_low_lead_points": 12,
+          "trump_overkill_low_lead_points_rate": 0.11214953271028037,
+          "trump_overkill_rate": 0.19245283018867926,
+          "trump_waste": 2,
+          "trump_waste_rate": 0.002457002457002457,
+          "trump_wins": 265,
+          "trump_wins_low_lead_points": 107
+        },
+        "draw": {
+          "lead_decisions": 19,
+          "lead_load": 2,
+          "lead_load_rate": 0.10526315789473684,
+          "lead_load_with_smooth_alternative": 1,
+          "second_hand_decisions": 19,
+          "second_hand_with_winning_reply": 15,
+          "trump_overkill": 1,
+          "trump_overkill_low_lead_points_rate": 0.0,
+          "trump_overkill_rate": 0.25,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 4,
+          "trump_wins_low_lead_points": 3
+        },
+        "human_win": {
+          "lead_decisions": 323,
+          "lead_load": 63,
+          "lead_load_rate": 0.19504643962848298,
+          "lead_load_with_smooth_alternative": 20,
+          "second_hand_decisions": 323,
+          "second_hand_with_winning_reply": 259,
+          "trump_overkill": 22,
+          "trump_overkill_low_lead_points": 6,
+          "trump_overkill_low_lead_points_rate": 0.25,
+          "trump_overkill_rate": 0.2558139534883721,
+          "trump_waste": 1,
+          "trump_waste_rate": 0.003861003861003861,
+          "trump_wins": 86,
+          "trump_wins_low_lead_points": 24
+        }
+      },
+      "policy_b": {
+        "ai_win": {
+          "lead_decisions": 988,
+          "lead_load": 141,
+          "lead_load_rate": 0.14271255060728744,
+          "lead_load_with_smooth_alternative": 62,
+          "second_hand_decisions": 988,
+          "second_hand_with_winning_reply": 814,
+          "trump_overkill": 44,
+          "trump_overkill_low_lead_points": 7,
+          "trump_overkill_low_lead_points_rate": 0.06542056074766354,
+          "trump_overkill_rate": 0.1660377358490566,
+          "trump_waste": 1,
+          "trump_waste_rate": 0.0012285012285012285,
+          "trump_wins": 265,
+          "trump_wins_low_lead_points": 107
+        },
+        "draw": {
+          "lead_decisions": 19,
+          "lead_load": 2,
+          "lead_load_rate": 0.10526315789473684,
+          "lead_load_with_smooth_alternative": 1,
+          "second_hand_decisions": 19,
+          "second_hand_with_winning_reply": 15,
+          "trump_overkill": 1,
+          "trump_overkill_low_lead_points_rate": 0.0,
+          "trump_overkill_rate": 0.2,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 5,
+          "trump_wins_low_lead_points": 3
+        },
+        "human_win": {
+          "lead_decisions": 323,
+          "lead_load": 63,
+          "lead_load_rate": 0.19504643962848298,
+          "lead_load_with_smooth_alternative": 20,
+          "second_hand_decisions": 323,
+          "second_hand_with_winning_reply": 259,
+          "trump_overkill": 20,
+          "trump_overkill_low_lead_points": 5,
+          "trump_overkill_low_lead_points_rate": 0.19230769230769232,
+          "trump_overkill_rate": 0.22727272727272727,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 88,
+          "trump_wins_low_lead_points": 26
+        }
+      },
+      "runtime_a": {
+        "ai_win": {
+          "lead_decisions": 988,
+          "lead_load": 137,
+          "lead_load_rate": 0.13866396761133604,
+          "lead_load_with_smooth_alternative": 59,
+          "second_hand_decisions": 988,
+          "second_hand_with_winning_reply": 814,
+          "trump_overkill": 58,
+          "trump_overkill_low_lead_points": 23,
+          "trump_overkill_low_lead_points_rate": 0.20535714285714285,
+          "trump_overkill_rate": 0.2116788321167883,
+          "trump_waste": 2,
+          "trump_waste_rate": 0.002457002457002457,
+          "trump_wins": 274,
+          "trump_wins_low_lead_points": 112
+        },
+        "draw": {
+          "lead_decisions": 19,
+          "lead_load": 2,
+          "lead_load_rate": 0.10526315789473684,
+          "lead_load_with_smooth_alternative": 1,
+          "second_hand_decisions": 19,
+          "second_hand_with_winning_reply": 15,
+          "trump_overkill": 1,
+          "trump_overkill_low_lead_points_rate": 0.0,
+          "trump_overkill_rate": 0.25,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 4,
+          "trump_wins_low_lead_points": 3
+        },
+        "human_win": {
+          "lead_decisions": 323,
+          "lead_load": 60,
+          "lead_load_rate": 0.18575851393188855,
+          "lead_load_with_smooth_alternative": 19,
+          "second_hand_decisions": 323,
+          "second_hand_with_winning_reply": 259,
+          "trump_overkill": 26,
+          "trump_overkill_low_lead_points": 6,
+          "trump_overkill_low_lead_points_rate": 0.18181818181818182,
+          "trump_overkill_rate": 0.27956989247311825,
+          "trump_waste": 2,
+          "trump_waste_rate": 0.007722007722007722,
+          "trump_wins": 93,
+          "trump_wins_low_lead_points": 33
+        }
+      },
+      "runtime_b": {
+        "ai_win": {
+          "lead_decisions": 988,
+          "lead_load": 136,
+          "lead_load_rate": 0.13765182186234817,
+          "lead_load_with_smooth_alternative": 56,
+          "second_hand_decisions": 988,
+          "second_hand_with_winning_reply": 814,
+          "trump_overkill": 52,
+          "trump_overkill_low_lead_points": 20,
+          "trump_overkill_low_lead_points_rate": 0.17857142857142858,
+          "trump_overkill_rate": 0.1918819188191882,
+          "trump_waste": 1,
+          "trump_waste_rate": 0.0012285012285012285,
+          "trump_wins": 271,
+          "trump_wins_low_lead_points": 112
+        },
+        "draw": {
+          "lead_decisions": 19,
+          "lead_load": 2,
+          "lead_load_rate": 0.10526315789473684,
+          "lead_load_with_smooth_alternative": 1,
+          "second_hand_decisions": 19,
+          "second_hand_with_winning_reply": 15,
+          "trump_overkill": 1,
+          "trump_overkill_low_lead_points_rate": 0.0,
+          "trump_overkill_rate": 0.2,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 5,
+          "trump_wins_low_lead_points": 3
+        },
+        "human_win": {
+          "lead_decisions": 323,
+          "lead_load": 60,
+          "lead_load_rate": 0.18575851393188855,
+          "lead_load_with_smooth_alternative": 20,
+          "second_hand_decisions": 323,
+          "second_hand_with_winning_reply": 259,
+          "trump_overkill": 23,
+          "trump_overkill_low_lead_points": 6,
+          "trump_overkill_low_lead_points_rate": 0.1875,
+          "trump_overkill_rate": 0.24468085106382978,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 94,
+          "trump_wins_low_lead_points": 32
+        }
+      }
+    },
+    "by_runtime_branch": {
+      "policy_a": {
+        "fallback": {
+          "lead_decisions": 1050,
+          "lead_load": 104,
+          "lead_load_rate": 0.09904761904761905,
+          "lead_load_with_smooth_alternative": 35,
+          "second_hand_decisions": 980,
+          "second_hand_with_winning_reply": 812,
+          "trump_overkill": 47,
+          "trump_overkill_low_lead_points": 13,
+          "trump_overkill_low_lead_points_rate": 0.13,
+          "trump_overkill_rate": 0.19665271966527198,
+          "trump_waste": 3,
+          "trump_waste_rate": 0.003694581280788177,
+          "trump_wins": 239,
+          "trump_wins_low_lead_points": 100
+        },
+        "search": {
+          "lead_decisions": 140,
+          "lead_load": 52,
+          "lead_load_rate": 0.37142857142857144,
+          "lead_load_with_smooth_alternative": 30,
+          "second_hand_decisions": 210,
+          "second_hand_with_winning_reply": 168,
+          "trump_overkill": 12,
+          "trump_overkill_low_lead_points": 2,
+          "trump_overkill_low_lead_points_rate": 0.2,
+          "trump_overkill_rate": 0.21818181818181817,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 55,
+          "trump_wins_low_lead_points": 10
+        },
+        "solver": {
+          "lead_decisions": 140,
+          "lead_load": 46,
+          "lead_load_rate": 0.32857142857142857,
+          "lead_load_with_smooth_alternative": 14,
+          "second_hand_decisions": 140,
+          "second_hand_with_winning_reply": 108,
+          "trump_overkill": 15,
+          "trump_overkill_low_lead_points": 3,
+          "trump_overkill_low_lead_points_rate": 0.125,
+          "trump_overkill_rate": 0.2459016393442623,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 61,
+          "trump_wins_low_lead_points": 24
+        }
+      },
+      "policy_b": {
+        "fallback": {
+          "lead_decisions": 1050,
+          "lead_load": 104,
+          "lead_load_rate": 0.09904761904761905,
+          "lead_load_with_smooth_alternative": 35,
+          "second_hand_decisions": 980,
+          "second_hand_with_winning_reply": 812,
+          "trump_overkill": 41,
+          "trump_overkill_low_lead_points": 9,
+          "trump_overkill_low_lead_points_rate": 0.0891089108910891,
+          "trump_overkill_rate": 0.17083333333333334,
+          "trump_waste": 1,
+          "trump_waste_rate": 0.0012315270935960591,
+          "trump_wins": 240,
+          "trump_wins_low_lead_points": 101
+        },
+        "search": {
+          "lead_decisions": 140,
+          "lead_load": 55,
+          "lead_load_rate": 0.39285714285714285,
+          "lead_load_with_smooth_alternative": 35,
+          "second_hand_decisions": 210,
+          "second_hand_with_winning_reply": 168,
+          "trump_overkill": 10,
+          "trump_overkill_low_lead_points": 2,
+          "trump_overkill_low_lead_points_rate": 0.16666666666666666,
+          "trump_overkill_rate": 0.17857142857142858,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 56,
+          "trump_wins_low_lead_points": 12
+        },
+        "solver": {
+          "lead_decisions": 140,
+          "lead_load": 47,
+          "lead_load_rate": 0.3357142857142857,
+          "lead_load_with_smooth_alternative": 13,
+          "second_hand_decisions": 140,
+          "second_hand_with_winning_reply": 108,
+          "trump_overkill": 14,
+          "trump_overkill_low_lead_points": 1,
+          "trump_overkill_low_lead_points_rate": 0.043478260869565216,
+          "trump_overkill_rate": 0.22580645161290322,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 62,
+          "trump_wins_low_lead_points": 23
+        }
+      },
+      "runtime_a": {
+        "fallback": {
+          "lead_decisions": 1050,
+          "lead_load": 104,
+          "lead_load_rate": 0.09904761904761905,
+          "lead_load_with_smooth_alternative": 35,
+          "second_hand_decisions": 980,
+          "second_hand_with_winning_reply": 812,
+          "trump_overkill": 47,
+          "trump_overkill_low_lead_points": 13,
+          "trump_overkill_low_lead_points_rate": 0.13,
+          "trump_overkill_rate": 0.19665271966527198,
+          "trump_waste": 3,
+          "trump_waste_rate": 0.003694581280788177,
+          "trump_wins": 239,
+          "trump_wins_low_lead_points": 100
+        },
+        "search": {
+          "lead_decisions": 140,
+          "lead_load": 41,
+          "lead_load_rate": 0.29285714285714287,
+          "lead_load_with_smooth_alternative": 24,
+          "second_hand_decisions": 210,
+          "second_hand_with_winning_reply": 168,
+          "trump_overkill": 13,
+          "trump_overkill_low_lead_points": 4,
+          "trump_overkill_low_lead_points_rate": 0.19047619047619047,
+          "trump_overkill_rate": 0.18309859154929578,
+          "trump_waste": 1,
+          "trump_waste_rate": 0.005952380952380952,
+          "trump_wins": 71,
+          "trump_wins_low_lead_points": 21
+        },
+        "solver": {
+          "lead_decisions": 140,
+          "lead_load": 54,
+          "lead_load_rate": 0.38571428571428573,
+          "lead_load_with_smooth_alternative": 20,
+          "second_hand_decisions": 140,
+          "second_hand_with_winning_reply": 108,
+          "trump_overkill": 25,
+          "trump_overkill_low_lead_points": 12,
+          "trump_overkill_low_lead_points_rate": 0.4444444444444444,
+          "trump_overkill_rate": 0.4098360655737705,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 61,
+          "trump_wins_low_lead_points": 27
+        }
+      },
+      "runtime_b": {
+        "fallback": {
+          "lead_decisions": 1050,
+          "lead_load": 104,
+          "lead_load_rate": 0.09904761904761905,
+          "lead_load_with_smooth_alternative": 35,
+          "second_hand_decisions": 980,
+          "second_hand_with_winning_reply": 812,
+          "trump_overkill": 41,
+          "trump_overkill_low_lead_points": 9,
+          "trump_overkill_low_lead_points_rate": 0.0891089108910891,
+          "trump_overkill_rate": 0.17083333333333334,
+          "trump_waste": 1,
+          "trump_waste_rate": 0.0012315270935960591,
+          "trump_wins": 240,
+          "trump_wins_low_lead_points": 101
+        },
+        "search": {
+          "lead_decisions": 140,
+          "lead_load": 40,
+          "lead_load_rate": 0.2857142857142857,
+          "lead_load_with_smooth_alternative": 22,
+          "second_hand_decisions": 210,
+          "second_hand_with_winning_reply": 168,
+          "trump_overkill": 10,
+          "trump_overkill_low_lead_points": 5,
+          "trump_overkill_low_lead_points_rate": 0.2631578947368421,
+          "trump_overkill_rate": 0.14492753623188406,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 69,
+          "trump_wins_low_lead_points": 19
+        },
+        "solver": {
+          "lead_decisions": 140,
+          "lead_load": 54,
+          "lead_load_rate": 0.38571428571428573,
+          "lead_load_with_smooth_alternative": 20,
+          "second_hand_decisions": 140,
+          "second_hand_with_winning_reply": 108,
+          "trump_overkill": 25,
+          "trump_overkill_low_lead_points": 12,
+          "trump_overkill_low_lead_points_rate": 0.4444444444444444,
+          "trump_overkill_rate": 0.4098360655737705,
+          "trump_waste_rate": 0.0,
+          "trump_wins": 61,
+          "trump_wins_low_lead_points": 27
+        }
+      }
+    },
+    "overall": {
+      "policy_a": {
+        "lead_decisions": 1330,
+        "lead_load": 202,
+        "lead_load_rate": 0.1518796992481203,
+        "lead_load_with_smooth_alternative": 79,
+        "second_hand_decisions": 1330,
+        "second_hand_with_winning_reply": 1088,
+        "trump_overkill": 74,
+        "trump_overkill_low_lead_points": 18,
+        "trump_overkill_low_lead_points_rate": 0.13432835820895522,
+        "trump_overkill_rate": 0.2084507042253521,
+        "trump_waste": 3,
+        "trump_waste_rate": 0.0027573529411764708,
+        "trump_wins": 355,
+        "trump_wins_low_lead_points": 134
+      },
+      "policy_b": {
+        "lead_decisions": 1330,
+        "lead_load": 206,
+        "lead_load_rate": 0.1548872180451128,
+        "lead_load_with_smooth_alternative": 83,
+        "second_hand_decisions": 1330,
+        "second_hand_with_winning_reply": 1088,
+        "trump_overkill": 65,
+        "trump_overkill_low_lead_points": 12,
+        "trump_overkill_low_lead_points_rate": 0.08823529411764706,
+        "trump_overkill_rate": 0.18156424581005587,
+        "trump_waste": 1,
+        "trump_waste_rate": 0.0009191176470588235,
+        "trump_wins": 358,
+        "trump_wins_low_lead_points": 136
+      },
+      "runtime_a": {
+        "lead_decisions": 1330,
+        "lead_load": 199,
+        "lead_load_rate": 0.14962406015037594,
+        "lead_load_with_smooth_alternative": 79,
+        "second_hand_decisions": 1330,
+        "second_hand_with_winning_reply": 1088,
+        "trump_overkill": 85,
+        "trump_overkill_low_lead_points": 29,
+        "trump_overkill_low_lead_points_rate": 0.19594594594594594,
+        "trump_overkill_rate": 0.22911051212938005,
+        "trump_waste": 4,
+        "trump_waste_rate": 0.003676470588235294,
+        "trump_wins": 371,
+        "trump_wins_low_lead_points": 148
+      },
+      "runtime_b": {
+        "lead_decisions": 1330,
+        "lead_load": 198,
+        "lead_load_rate": 0.14887218045112782,
+        "lead_load_with_smooth_alternative": 77,
+        "second_hand_decisions": 1330,
+        "second_hand_with_winning_reply": 1088,
+        "trump_overkill": 76,
+        "trump_overkill_low_lead_points": 26,
+        "trump_overkill_low_lead_points_rate": 0.17687074829931973,
+        "trump_overkill_rate": 0.20540540540540542,
+        "trump_waste": 1,
+        "trump_waste_rate": 0.0009191176470588235,
+        "trump_wins": 370,
+        "trump_wins_low_lead_points": 147
+      }
+    }
+  },
+  "choice_transitions_a_to_b": {
+    "policy": {
+      "by_human_outcome": {
+        "ai_win": {
+          "b_higher_conservation_cost": 111,
+          "b_higher_cost_share_of_disagreements": 0.45121951219512196,
+          "b_lower_conservation_cost": 118,
+          "b_lower_cost_share_of_disagreements": 0.4796747967479675,
+          "different_equal_conservation_cost": 17,
+          "disagreements": 246,
+          "same": 1730
+        },
+        "draw": {
+          "b_higher_conservation_cost": 5,
+          "b_higher_cost_share_of_disagreements": 1.0,
+          "b_lower_cost_share_of_disagreements": 0.0,
+          "disagreements": 5,
+          "same": 33
+        },
+        "human_win": {
+          "b_higher_conservation_cost": 27,
+          "b_higher_cost_share_of_disagreements": 0.36486486486486486,
+          "b_lower_conservation_cost": 40,
+          "b_lower_cost_share_of_disagreements": 0.5405405405405406,
+          "different_equal_conservation_cost": 7,
+          "disagreements": 74,
+          "same": 572
+        }
+      },
+      "by_runtime_branch": {
+        "fallback": {
+          "b_higher_conservation_cost": 110,
+          "b_higher_cost_share_of_disagreements": 0.45081967213114754,
+          "b_lower_conservation_cost": 118,
+          "b_lower_cost_share_of_disagreements": 0.48360655737704916,
+          "different_equal_conservation_cost": 16,
+          "disagreements": 244,
+          "same": 1786
+        },
+        "search": {
+          "b_higher_conservation_cost": 18,
+          "b_higher_cost_share_of_disagreements": 0.45,
+          "b_lower_conservation_cost": 16,
+          "b_lower_cost_share_of_disagreements": 0.4,
+          "different_equal_conservation_cost": 6,
+          "disagreements": 40,
+          "same": 310
+        },
+        "solver": {
+          "b_higher_conservation_cost": 15,
+          "b_higher_cost_share_of_disagreements": 0.36585365853658536,
+          "b_lower_conservation_cost": 24,
+          "b_lower_cost_share_of_disagreements": 0.5853658536585366,
+          "different_equal_conservation_cost": 2,
+          "disagreements": 41,
+          "same": 239
+        }
+      },
+      "overall": {
+        "b_higher_conservation_cost": 143,
+        "b_higher_cost_share_of_disagreements": 0.44,
+        "b_lower_conservation_cost": 158,
+        "b_lower_cost_share_of_disagreements": 0.48615384615384616,
+        "different_equal_conservation_cost": 24,
+        "disagreements": 325,
+        "same": 2335
+      }
+    },
+    "runtime": {
+      "by_human_outcome": {
+        "ai_win": {
+          "b_higher_conservation_cost": 90,
+          "b_higher_cost_share_of_disagreements": 0.4433497536945813,
+          "b_lower_conservation_cost": 102,
+          "b_lower_cost_share_of_disagreements": 0.5024630541871922,
+          "different_equal_conservation_cost": 11,
+          "disagreements": 203,
+          "same": 1773
+        },
+        "draw": {
+          "b_higher_conservation_cost": 7,
+          "b_higher_cost_share_of_disagreements": 0.875,
+          "b_lower_conservation_cost": 1,
+          "b_lower_cost_share_of_disagreements": 0.125,
+          "disagreements": 8,
+          "same": 30
+        },
+        "human_win": {
+          "b_higher_conservation_cost": 28,
+          "b_higher_cost_share_of_disagreements": 0.39436619718309857,
+          "b_lower_conservation_cost": 34,
+          "b_lower_cost_share_of_disagreements": 0.4788732394366197,
+          "different_equal_conservation_cost": 9,
+          "disagreements": 71,
+          "same": 575
+        }
+      },
+      "by_runtime_branch": {
+        "fallback": {
+          "b_higher_conservation_cost": 110,
+          "b_higher_cost_share_of_disagreements": 0.45081967213114754,
+          "b_lower_conservation_cost": 118,
+          "b_lower_cost_share_of_disagreements": 0.48360655737704916,
+          "different_equal_conservation_cost": 16,
+          "disagreements": 244,
+          "same": 1786
+        },
+        "search": {
+          "b_higher_conservation_cost": 15,
+          "b_higher_cost_share_of_disagreements": 0.39473684210526316,
+          "b_lower_conservation_cost": 19,
+          "b_lower_cost_share_of_disagreements": 0.5,
+          "different_equal_conservation_cost": 4,
+          "disagreements": 38,
+          "same": 312
+        },
+        "solver": {
+          "b_higher_cost_share_of_disagreements": 0.0,
+          "b_lower_cost_share_of_disagreements": 0.0,
+          "disagreements": 0,
+          "same": 280
+        }
+      },
+      "overall": {
+        "b_higher_conservation_cost": 125,
+        "b_higher_cost_share_of_disagreements": 0.4432624113475177,
+        "b_lower_conservation_cost": 137,
+        "b_lower_cost_share_of_disagreements": 0.4858156028368794,
+        "different_equal_conservation_cost": 20,
+        "disagreements": 282,
+        "same": 2378
+      }
+    }
+  },
+  "comparison": {
+    "labels": {
+      "a": "best_a2c_v13.npz",
+      "b": "best_a2c_v14.npz"
+    },
+    "policy": {
+      "by_actor": {
+        "ai": {
+          "agreement_rate": 0.881203007518797,
+          "agreements": 1172,
+          "disagreements": 158,
+          "observations": 1330,
+          "stable_disagreements": 158
+        },
+        "human": {
+          "agreement_rate": 0.8744360902255639,
+          "agreements": 1163,
+          "disagreements": 167,
+          "observations": 1330,
+          "stable_disagreements": 167
+        }
+      },
+      "by_human_outcome": {
+        "ai_win": {
+          "agreement_rate": 0.8755060728744939,
+          "agreements": 1730,
+          "disagreements": 246,
+          "observations": 1976,
+          "stable_disagreements": 246
+        },
+        "draw": {
+          "agreement_rate": 0.868421052631579,
+          "agreements": 33,
+          "disagreements": 5,
+          "observations": 38,
+          "stable_disagreements": 5
+        },
+        "human_win": {
+          "agreement_rate": 0.8854489164086687,
+          "agreements": 572,
+          "disagreements": 74,
+          "observations": 646,
+          "stable_disagreements": 74
+        }
+      },
+      "by_runtime_branch": {
+        "fallback": {
+          "agreement_rate": 0.8798029556650246,
+          "agreements": 1786,
+          "disagreements": 244,
+          "observations": 2030,
+          "stable_disagreements": 244
+        },
+        "search": {
+          "agreement_rate": 0.8857142857142857,
+          "agreements": 310,
+          "disagreements": 40,
+          "observations": 350,
+          "stable_disagreements": 40
+        },
+        "solver": {
+          "agreement_rate": 0.8535714285714285,
+          "agreements": 239,
+          "disagreements": 41,
+          "observations": 280,
+          "stable_disagreements": 41
+        }
+      },
+      "by_source_model": {
+        "best_a2c_v13.npz": {
+          "agreement_rate": 0.8746654772524531,
+          "agreements": 1961,
+          "disagreements": 281,
+          "observations": 2242,
+          "stable_disagreements": 281
+        },
+        "best_a2c_v14.npz": {
+          "agreement_rate": 0.8947368421052632,
+          "agreements": 374,
+          "disagreements": 44,
+          "observations": 418,
+          "stable_disagreements": 44
+        }
+      },
+      "overall": {
+        "agreement_rate": 0.8778195488721805,
+        "agreements": 2335,
+        "disagreement_rate_ci95_game_bootstrap": {
+          "confidence": 0.95,
+          "high": 0.13383458646616542,
+          "low": 0.11052631578947368,
+          "samples": 5000
+        },
+        "disagreements": 325,
+        "observations": 2660,
+        "stable_disagreements": 325
+      }
+    },
+    "runtime": {
+      "by_actor": {
+        "ai": {
+          "agreement_rate": 0.8992481203007519,
+          "agreements": 1196,
+          "disagreements": 134,
+          "observations": 1330,
+          "stable_disagreements": 121
+        },
+        "human": {
+          "agreement_rate": 0.8887218045112782,
+          "agreements": 1182,
+          "disagreements": 148,
+          "observations": 1330,
+          "stable_disagreements": 129
+        }
+      },
+      "by_branch": {
+        "fallback": {
+          "agreement_rate": 0.8798029556650246,
+          "agreements": 1786,
+          "disagreements": 244,
+          "observations": 2030,
+          "stable_disagreements": 244
+        },
+        "search": {
+          "agreement_rate": 0.8914285714285715,
+          "agreements": 312,
+          "disagreements": 38,
+          "observations": 350,
+          "stable_disagreements": 6
+        },
+        "solver": {
+          "agreement_rate": 1.0,
+          "agreements": 280,
+          "disagreements": 0,
+          "observations": 280,
+          "stable_disagreements": 0
+        }
+      },
+      "by_human_outcome": {
+        "ai_win": {
+          "agreement_rate": 0.8972672064777328,
+          "agreements": 1773,
+          "disagreements": 203,
+          "observations": 1976,
+          "stable_disagreements": 186
+        },
+        "draw": {
+          "agreement_rate": 0.7894736842105263,
+          "agreements": 30,
+          "disagreements": 8,
+          "observations": 38,
+          "stable_disagreements": 5
+        },
+        "human_win": {
+          "agreement_rate": 0.8900928792569659,
+          "agreements": 575,
+          "disagreements": 71,
+          "observations": 646,
+          "stable_disagreements": 59
+        }
+      },
+      "by_source_model": {
+        "best_a2c_v13.npz": {
+          "agreement_rate": 0.8902765388046388,
+          "agreements": 1996,
+          "disagreements": 246,
+          "observations": 2242,
+          "stable_disagreements": 216
+        },
+        "best_a2c_v14.npz": {
+          "agreement_rate": 0.9138755980861244,
+          "agreements": 382,
+          "disagreements": 36,
+          "observations": 418,
+          "stable_disagreements": 34
+        }
+      },
+      "overall": {
+        "agreement_rate": 0.893984962406015,
+        "agreements": 2378,
+        "disagreement_rate_ci95_game_bootstrap": {
+          "confidence": 0.95,
+          "high": 0.11804511278195488,
+          "low": 0.09398496240601503,
+          "samples": 5000
+        },
+        "disagreements": 282,
+        "observations": 2660,
+        "stable_disagreements": 250
+      }
+    }
+  },
+  "elapsed_seconds": 41.6062225420028,
+  "limitations": [
+    "Il replay misura differenze di scelta sulle stesse osservazioni, non quale scelta avrebbe vinto la partita.",
+    "Le partite provengono da giocatori umani diversi e non stimano causalmente la forza relativa v13-v14.",
+    "La scelta PIMC resta campionaria; stable_disagreements richiede stabilita' in tutti i replay configurati."
+  ],
+  "method": {
+    "anti_cheat": "input ricostruito esclusivamente da ObservationDTO pubblico; nessuna mano avversaria o deck order",
+    "bootstrap": {
+      "samples": 5000,
+      "unit": "game"
+    },
+    "forced_decisions_excluded": true,
+    "paired_same_observations": true,
+    "paired_same_runtime_seeds": true,
+    "privacy": "solo aggregati; nessun game_id, nome, client_id o observation nel report",
+    "runtime": {
+      "belief_uniform_mix": 0.1,
+      "determinizations": 16,
+      "endgame_solver": true,
+      "max_unknown_cards": 8,
+      "numba_search": false,
+      "repeats_in_search_window": 4
+    }
+  },
+  "native_replay_fidelity": {
+    "model_a": {
+      "actual_policy_agreement_on_fallback": 853,
+      "actual_policy_agreement_rate_on_fallback": 1.0,
+      "actual_runtime_agreement_fallback": 853,
+      "actual_runtime_agreement_rate_fallback": 1.0,
+      "actual_runtime_agreement_rate_search": 0.8133333333333334,
+      "actual_runtime_agreement_rate_solver": 1.0,
+      "actual_runtime_agreement_search": 122,
+      "actual_runtime_agreement_solver": 118,
+      "branch_fallback": 853,
+      "branch_match_rate": 1.0,
+      "branch_matches": 1121,
+      "branch_search": 150,
+      "branch_solver": 118,
+      "observations": 1121
+    },
+    "model_b": {
+      "actual_policy_agreement_on_fallback": 159,
+      "actual_policy_agreement_rate_on_fallback": 1.0,
+      "actual_runtime_agreement_fallback": 159,
+      "actual_runtime_agreement_rate_fallback": 1.0,
+      "actual_runtime_agreement_rate_search": 0.8928571428571429,
+      "actual_runtime_agreement_rate_solver": 1.0,
+      "actual_runtime_agreement_search": 25,
+      "actual_runtime_agreement_solver": 22,
+      "branch_fallback": 159,
+      "branch_match_rate": 1.0,
+      "branch_matches": 209,
+      "branch_search": 28,
+      "branch_solver": 22,
+      "observations": 209
+    }
+  },
+  "runtime_metrics": {
+    "a": {
+      "coerced_moves": 0,
+      "endgame_solver_decisions": 280,
+      "failed_determinizations": 0,
+      "failed_rollouts": 0,
+      "fallback_decisions": 2030,
+      "search_decisions": 1400,
+      "total_decisions": 3710
+    },
+    "b": {
+      "coerced_moves": 0,
+      "endgame_solver_decisions": 280,
+      "failed_determinizations": 0,
+      "failed_rollouts": 0,
+      "fallback_decisions": 2030,
+      "search_decisions": 1400,
+      "total_decisions": 3710
+    }
+  },
+  "schema": "briscola.live_policy_replay.v1",
+  "scope": {
+    "eligible_nonforced_decisions": 2660,
+    "forced_decisions_skipped": 140,
+    "games": 70,
+    "games_by_code_version": {
+      "0.34.0": 16,
+      "0.35.0": 31,
+      "0.35.1": 12,
+      "0.36.0": 11
+    },
+    "games_by_source_model": {
+      "best_a2c_v13.npz": 59,
+      "best_a2c_v14.npz": 11
+    },
+    "outcomes_human_perspective": {
+      "ai_win": 52,
+      "draw": 1,
+      "human_win": 17
+    },
+    "records": 2800
+  },
+  "seed": 20260714,
+  "versions": {
+    "code": "0.36.0",
+    "git_commit": "414312c79eb5f77f273d01209c9650e057cd2d7d",
+    "numpy": "2.4.6",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

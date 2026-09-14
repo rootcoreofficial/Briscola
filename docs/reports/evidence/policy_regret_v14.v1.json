@@ -1,0 +1,173 @@
+{
+  "aggregate": {
+    "by_phase": {
+      "early": {
+        "candidate_disagreements": 19,
+        "decisions": 48,
+        "mean_regret_all": 0.34765625,
+        "reliable_errors": 0
+      },
+      "endgame": {
+        "candidate_disagreements": 25,
+        "decisions": 48,
+        "mean_regret_all": 0.3333333333333333,
+        "mean_regret_reliable": 3.2,
+        "reliable_errors": 5
+      },
+      "mid": {
+        "candidate_disagreements": 17,
+        "decisions": 48,
+        "mean_regret_all": 0.04296875,
+        "reliable_errors": 0
+      },
+      "pimc_window": {
+        "candidate_disagreements": 20,
+        "decisions": 48,
+        "mean_regret_all": 3.7890625,
+        "mean_regret_reliable": 19.23611111111111,
+        "reliable_errors": 9
+      }
+    },
+    "by_runtime_scope": {
+      "exact_solver": {
+        "decisions": 48,
+        "reliable_errors": 5
+      },
+      "pimc_search_window": {
+        "decisions": 48,
+        "reliable_errors": 9
+      },
+      "policy_only": {
+        "candidate_disagreement_rate": 0.375,
+        "candidate_disagreements": 36,
+        "decisions": 96,
+        "mean_regret_all": 0.1953125,
+        "median_regret_all": 0.0,
+        "reliable_errors": 0
+      }
+    },
+    "overall": {
+      "candidate_confirmed_as_evaluation_best": 147,
+      "candidate_disagreement_rate": 0.421875,
+      "candidate_disagreements": 81,
+      "decisions": 192,
+      "mean_regret_all": 1.1282552083333333,
+      "mean_regret_reliable": 13.508928571428571,
+      "median_regret_all": 0.0,
+      "median_regret_reliable": 6.625,
+      "reliable_error_rate": 0.07291666666666667,
+      "reliable_errors": 14,
+      "reliable_errors_policy_only": 0
+    },
+    "reliable_error_tags_runtime_scopes_only": {
+      "give_up_current_trick": 7,
+      "give_up_low_value_trick": 3,
+      "high_card_exposure_lead": 2,
+      "other": 4,
+      "premature_trump_lead": 1,
+      "trump_to_non_trump": 6
+    }
+  },
+  "anti_cheat": {
+    "actual_hidden_state_used_by_estimator": false,
+    "estimator_input": "PlayerObservation",
+    "provenance_is_never_passed_to_estimator": true,
+    "saved_context_contains_only_public_information_and_observer_hand": true
+  },
+  "caveats": [
+    "Fuori dall'endgame il regret e' una stima PIMC rispetto alla continuation policy, non verita' assoluta.",
+    "Il belief pesa mondi plausibili ma non legge la mano avversaria reale.",
+    "La suite bilanciata non stima direttamente punti persi per partita live.",
+    "Disaccordo con l'alternativa non significa errore: il gate usa soltanto lo split evaluation indipendente."
+  ],
+  "collection": {
+    "forced_policy_decisions_skipped": 34,
+    "game_pairs": 17,
+    "games_started": 34,
+    "opponent_counts": {
+      "heuristic_trump_saver": 64,
+      "heuristic_v1": 64,
+      "mirror": 64
+    },
+    "phase_position_counts": {
+      "early:lead": 24,
+      "early:response": 24,
+      "endgame:lead": 24,
+      "endgame:response": 24,
+      "mid:lead": 24,
+      "mid:response": 24,
+      "pimc_window:lead": 24,
+      "pimc_window:response": 24
+    },
+    "records_collected": 192
+  },
+  "decision": {
+    "cluster_thresholds": {
+      "count_min": 3,
+      "game_pair_count_min": 2,
+      "opponent_count_min": 2
+    },
+    "clusters": [],
+    "explanation_it": "La suite non trova errori affidabili fuori dalle finestre gia' gestite da PIMC e solver.",
+    "reliable_policy_only_errors": 0,
+    "reliable_runtime_scope_errors": 14,
+    "verdict": "no_policy_error_signal"
+  },
+  "inputs": {
+    "belief_model": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "policy_model": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    }
+  },
+  "protocol": {
+    "balanced_cells": "opponent_x_phase_x_position",
+    "belief_sampling": true,
+    "belief_uniform_mix": 0.1,
+    "confidence_z": 2.576,
+    "determinizations": 64,
+    "endgame": "exact_minimax_from_player_observation",
+    "min_regret_points": 1.0,
+    "num_observations": 192,
+    "opponents": [
+      "mirror",
+      "heuristic_trump_saver",
+      "heuristic_v1"
+    ],
+    "phase_position_buckets": [
+      "early:lead",
+      "early:response",
+      "mid:lead",
+      "mid:response",
+      "pimc_window:lead",
+      "pimc_window:response",
+      "endgame:lead",
+      "endgame:response"
+    ],
+    "purpose": "diagnose_residual_policy_errors_not_promote_model",
+    "rollout_policy": "bc_model(best_a2c_v14.npz,encoder=v4)",
+    "sample_split": "first_half_select_candidate_second_half_estimate_paired_regret",
+    "seat_fair_collection": true,
+    "seed": 20260720
+  },
+  "reproducibility": {
+    "byte_identical_rerun": true,
+    "full_report_path": "benchmarks/experiments/policy_regret_v14_v0_20260714/policy_regret_v14_o192_d64_seed20260720.json",
+    "full_report_sha256": "d14bfb9112c65a2352e63f696ec00b14803daf4d11e505f90acce145e431fa6f",
+    "full_report_size_bytes": 457759,
+    "rerun_sha256": "d14bfb9112c65a2352e63f696ec00b14803daf4d11e505f90acce145e431fa6f"
+  },
+  "schema": "briscola.policy_regret_evidence.v1",
+  "versions": {
+    "code": "0.36.0",
+    "git_commit": "b9ff15b14209fae7dca0c759b73cdb89ec32f845",
+    "numpy": "2.4.6",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

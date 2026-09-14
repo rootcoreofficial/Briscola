@@ -1,0 +1,133 @@
+{
+  "schema": "suit_augmentation_paired_ablation_v1",
+  "date": "2026-07-11",
+  "code": {
+    "base_commit": "903a37967f54415b942d5b41b6a7cb1d6c04c387",
+    "worktree_dirty": true,
+    "code_version": "0.35.1"
+  },
+  "protocol": {
+    "warm_start": "data/models/best_a2c_v13.npz",
+    "training_games_per_model": 10000,
+    "training_seeds": [
+      20260711,
+      20260712,
+      20260713
+    ],
+    "control": "historical default / --suit-augmentation off",
+    "treatment": "--suit-augmentation paired",
+    "symmetry_observations_per_model": 4096,
+    "symmetry_permutations_per_observation": 24,
+    "strength_games_per_match": 10000,
+    "strength_suite": "medium seat-fair"
+  },
+  "symmetry": {
+    "v13_baseline": {
+      "identity_flip_rate": 0.18185292119565216,
+      "identity_mean_js_bits": 0.1417451334680707,
+      "any_flip_observation_rate": 0.51171875
+    },
+    "control": {
+      "by_seed": [
+        {
+          "seed": 20260711,
+          "identity_flip_rate": 0.18202275815217392,
+          "identity_mean_js_bits": 0.1407832354240189,
+          "any_flip_observation_rate": 0.515380859375
+        },
+        {
+          "seed": 20260712,
+          "identity_flip_rate": 0.18630052649456522,
+          "identity_mean_js_bits": 0.14280529303067144,
+          "any_flip_observation_rate": 0.51220703125
+        },
+        {
+          "seed": 20260713,
+          "identity_flip_rate": 0.18119480298913043,
+          "identity_mean_js_bits": 0.1401266193069475,
+          "any_flip_observation_rate": 0.508544921875
+        }
+      ],
+      "mean": {
+        "identity_flip_rate": 0.1831726958786232,
+        "identity_mean_js_bits": 0.14123838258721264,
+        "any_flip_observation_rate": 0.5120442708333334
+      }
+    },
+    "paired": {
+      "by_seed": [
+        {
+          "seed": 20260711,
+          "identity_flip_rate": 0.18963357676630435,
+          "identity_mean_js_bits": 0.14691255227606828,
+          "any_flip_observation_rate": 0.526123046875
+        },
+        {
+          "seed": 20260712,
+          "identity_flip_rate": 0.18972911005434784,
+          "identity_mean_js_bits": 0.14674583698982807,
+          "any_flip_observation_rate": 0.5283203125
+        },
+        {
+          "seed": 20260713,
+          "identity_flip_rate": 0.18592900815217392,
+          "identity_mean_js_bits": 0.1435948125089544,
+          "any_flip_observation_rate": 0.513916015625
+        }
+      ],
+      "mean": {
+        "identity_flip_rate": 0.18843056499094205,
+        "identity_mean_js_bits": 0.1457510672582836,
+        "any_flip_observation_rate": 0.5227864583333334
+      }
+    },
+    "paired_minus_control": {
+      "identity_flip_rate": 0.005257869112318854,
+      "identity_mean_js_bits": 0.004512684671070964,
+      "any_flip_observation_rate": 0.0107421875
+    }
+  },
+  "strength": {
+    "paired_vs_same_seed_control": {
+      "by_seed_avg_point_diff": [
+        -0.0756,
+        -0.35,
+        -0.0188
+      ],
+      "mean_avg_point_diff": -0.1481333333333333,
+      "mean_score_rate": 0.4963666666666667
+    },
+    "control_vs_v13": {
+      "by_seed_avg_point_diff": [
+        -0.1086,
+        -0.0326,
+        0.0978
+      ],
+      "mean_avg_point_diff": -0.014466666666666664,
+      "mean_score_rate": 0.49948333333333333
+    },
+    "paired_vs_v13": {
+      "by_seed_avg_point_diff": [
+        -0.2964,
+        -0.4704,
+        -0.2186
+      ],
+      "mean_avg_point_diff": -0.32846666666666663,
+      "mean_score_rate": 0.49616666666666664
+    }
+  },
+  "decision": {
+    "status": "stop",
+    "promote_model": false,
+    "run_longer": false,
+    "next_ablation": "explicit suit consistency loss with stop-gradient target"
+  },
+  "artifact_sha256": {
+    "control_10k_seed20260711.npz": "a370ce81ddbcd74102da34b450109b04ba78f7a5d0c7f343d075e648bb20c7e8",
+    "control_10k_seed20260712.npz": "bd841bfb89b50767e2396b893180e1a382809fa498104d67fd6c66c7c2d6b5c6",
+    "control_10k_seed20260713.npz": "0970f4f2c9b9e22683bb4e2cb50c27c5528d341be331dd4bc91333f9c1d4f53d",
+    "paired_10k_seed20260711.npz": "dcf773435db65f4f61341f0f2469e352aca6d0f35030ab8dde7ad58f3c1d866d",
+    "paired_10k_seed20260712.npz": "20597d1eedd72929c5bf50bfe61e74c09a50a6ccb47d1ea5110b3bf6941f8e9e",
+    "paired_10k_seed20260713.npz": "fb5ac375dfd823ed6d3ecf0fa20de8014a844b5a3931f8ee21eab9d7e826c5eb"
+  }
+}

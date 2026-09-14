@@ -1,0 +1,17 @@
+{
+  "name": "Assistente Briscola AI",
+  "short_name": "Briscola AI",
+  "start_url": "/replay",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "/static/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

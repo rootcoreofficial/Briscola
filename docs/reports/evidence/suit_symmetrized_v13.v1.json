@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-11",
+  "code_commit_before_implementation": "a0e3ec510328ad17ff1214d4f125cc03fc7e03ec",
+  "model": {
+    "path": "data/models/best_a2c_v13.npz",
+    "sha256": "5b1c6ea0bca7fd2c868e01d4d583cbc5df7bbef2ab86bbb3ded4b18b14c9f1cf"
+  },
+  "equivariance": {
+    "observations": 160,
+    "nonidentity_comparisons": 3680,
+    "action_flips": 0,
+    "flip_rate": 0.0,
+    "max_abs_logits_delta": 0.0
+  },
+  "latency": {
+    "observations": 160,
+    "decisions_per_agent": 10000,
+    "base": {
+      "mean_ms": 0.0512693953,
+      "p95_ms": 0.056772025,
+      "decisions_per_second": 19505.40665185314
+    },
+    "symmetrized_24x_batch": {
+      "mean_ms": 0.0743844662,
+      "p95_ms": 0.081959,
+      "decisions_per_second": 13443.667086502532
+    },
+    "ratios": {
+      "mean_latency": 1.4508551498363391,
+      "p95_latency": 1.443651164459961,
+      "throughput": 0.6892277267762216
+    }
+  },
+  "seat_fair_medium": {
+    "num_games": 10000,
+    "game_seeds": 5000,
+    "suite": "seed_suites/medium_5000.txt",
+    "matches": [
+      {
+        "agent_a": "v13_symmetrized_24x_batch",
+        "agent_b": "v13",
+        "avg_point_diff_a_minus_b": 0.9026,
+        "ci95_low": 0.47,
+        "ci95_high": 1.33,
+        "wins_a": 5007,
+        "wins_b": 4716,
+        "draws": 277
+      },
+      {
+        "agent_a": "v13_symmetrized_24x_batch",
+        "agent_b": "heuristic_v1",
+        "avg_point_diff_a_minus_b": 22.2932,
+        "ci95_low": 21.75,
+        "ci95_high": 22.84
+      },
+      {
+        "agent_a": "v13",
+        "agent_b": "heuristic_v1",
+        "avg_point_diff_a_minus_b": 21.5904,
+        "ci95_low": 21.04,
+        "ci95_high": 22.14
+      },
+      {
+        "agent_a": "v13_symmetrized_24x_batch",
+        "agent_b": "heuristic_trump_saver",
+        "avg_point_diff_a_minus_b": 15.8812,
+        "ci95_low": 15.36,
+        "ci95_high": 16.40
+      },
+      {
+        "agent_a": "v13",
+        "agent_b": "heuristic_trump_saver",
+        "avg_point_diff_a_minus_b": 15.2026,
+        "ci95_low": 14.68,
+        "ci95_high": 15.73
+      }
+    ]
+  },
+  "decision_quality_medium_vs_heuristic_v1": {
+    "num_games": 10000,
+    "seed": 0,
+    "workers": 1,
+    "v13": {
+      "avg_point_diff": 21.1854,
+      "trump_waste": 99,
+      "trump_waste_denominator": 82298,
+      "trump_overkill": 5564,
+      "trump_overkill_denominator": 25235,
+      "low_lead_overkill": 600,
+      "low_lead_overkill_denominator": 7488
+    },
+    "v13_symmetrized_24x_batch": {
+      "avg_point_diff": 22.7234,
+      "trump_waste": 41,
+      "trump_waste_denominator": 82705,
+      "trump_overkill": 5575,
+      "trump_overkill_denominator": 25287,
+      "low_lead_overkill": 283,
+      "low_lead_overkill_denominator": 7229
+    }
+  },
+  "decision": "GO alla distillazione; nessuna promozione runtime o PIMC in questa iterazione"
+}

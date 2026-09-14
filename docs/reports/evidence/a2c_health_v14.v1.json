@@ -1,0 +1,241 @@
+{
+  "aggregate": {
+    "all_gates_pass_all_seeds": true,
+    "gates": {
+      "advantage": true,
+      "critic": true,
+      "gradient": true,
+      "hidden": true,
+      "integrity": true,
+      "update": true
+    }
+  },
+  "decision": {
+    "explanation_it": "I segnali interni sono stabili su tutti i seed: non emerge una correzione numerica prioritaria; il test successivo può isolare la schedule davvero appaiata.",
+    "next_experiment": "paired_training_schedule",
+    "verdict": "signals_healthy"
+  },
+  "inputs": {
+    "belief_model": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "init_model": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    },
+    "opponent_model": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    },
+    "value_model": {
+      "path": "data/models/value_v1_v4_fullgame_h128_seed20260718.npz",
+      "sha256": "5e340ee7fc9d636fa34ccc830dde53ed2b63580591cadc98dd3e41faad9c7fca",
+      "size_bytes": 229772
+    }
+  },
+  "protocol": {
+    "late_window": "last_half_of_optimizer_updates_per_seed",
+    "num_games_per_seed": 2000,
+    "purpose": "route_one_next_a2c_ablation_not_model_promotion",
+    "rule": "every_seed_must_pass_each_gate; routing priority is integrity, critic, advantage, optimizer, hidden",
+    "seeds": [
+      20260714,
+      20260715,
+      20260716
+    ],
+    "thresholds": {
+      "actor_head_relative_update_p95_max": 0.01,
+      "advantage_bias_ratio_median_max": 0.25,
+      "critic_explained_variance_median_min": 0.1,
+      "critic_negative_explained_variance_fraction_max": 0.25,
+      "global_gradient_p95_over_median_max": 5.0,
+      "hidden_activation_rate_mean_max": 0.98,
+      "hidden_activation_rate_mean_min": 0.02,
+      "hidden_units_never_active_fraction_max": 0.75,
+      "trunk_relative_update_p95_max": 0.01
+    },
+    "update_every": 20,
+    "whole_run_metrics": [
+      "global_gradient_p95_over_median",
+      "trunk_relative_update_p95",
+      "actor_head_relative_update_p95"
+    ]
+  },
+  "recipe": {
+    "bc_anchor_beta": 0.01,
+    "encoder_version": "v4",
+    "fast_rollout": "numba",
+    "metrics_mode": "summary",
+    "opponent_mix": "bc_model:0.15,bc_model_pimc_belief:0.40,bc_model_value_lookahead_8x8:0.20,heuristic_trump_saver:0.12,heuristic_v1:0.04,heuristic_v2:0.06,random:0.03",
+    "opponent_pimc_determinizations": 16,
+    "opponent_value_max_unknown_cards": 8,
+    "overkill_penalty_beta": 0.3,
+    "overkill_penalty_mode": "gap",
+    "rollout_engine": "fast",
+    "seat_fair": true
+  },
+  "runs": [
+    {
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_health_v14_v0_20260714/a2c_health_seed20260714.diagnostics.json",
+          "sha256": "2bfacef0374ff0096d0313e300ea1e67bd9e9a4ccf0d3cf91c8a50297626290f",
+          "size_bytes": 188108
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_health_v14_v0_20260714/a2c_health_seed20260714.npz",
+          "sha256": "f85f39bd9169cca16652e5545246936cf5720be522a2efe353393b27f62f62ca",
+          "size_bytes": 435632
+        }
+      },
+      "gates": {
+        "advantage": true,
+        "critic": true,
+        "gradient": true,
+        "hidden": true,
+        "integrity": true,
+        "update": true
+      },
+      "initialization": {
+        "critic_mode": "reset_zero",
+        "init_contains_critic": false,
+        "init_critic_shapes": null,
+        "init_critic_used": false,
+        "note_it": "Il trainer corrente reinizializza sempre il critic; la diagnostica non cambia questo comportamento.",
+        "parameter_l2": {
+          "actor_head": 43.46960085919427,
+          "critic_head": 0.0,
+          "trunk": 162.07350195518126
+        }
+      },
+      "metrics": {
+        "actor_head_relative_update_p95": 0.000183158156726321,
+        "advantage_bias_ratio_coverage": 1.0,
+        "advantage_bias_ratio_median": 0.1480851557778443,
+        "critic_explained_variance_coverage": 1.0,
+        "critic_explained_variance_median": 0.1328263250434878,
+        "critic_mean_squared_error_median": 0.029910203940638775,
+        "critic_negative_explained_variance_fraction": 0.02,
+        "global_gradient_p95_over_median": 2.001331721319841,
+        "hidden_activation_rate_mean_median": 0.086728515625,
+        "hidden_units_never_active_fraction_max": 0.48046875,
+        "late_updates": 50,
+        "trunk_relative_update_p95": 0.00014465706542742535,
+        "updates": 100
+      },
+      "seed": 20260714
+    },
+    {
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_health_v14_v0_20260714/a2c_health_seed20260715.diagnostics.json",
+          "sha256": "7a3e2a990fcd1537d3367670a131e739a427c9968f47241ab126607e6be310a8",
+          "size_bytes": 187950
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_health_v14_v0_20260714/a2c_health_seed20260715.npz",
+          "sha256": "caaed06cf5dcba3aee44e0a8f5b221a0da5633b9d49e2b5ddf17c6b88e6f7410",
+          "size_bytes": 435620
+        }
+      },
+      "gates": {
+        "advantage": true,
+        "critic": true,
+        "gradient": true,
+        "hidden": true,
+        "integrity": true,
+        "update": true
+      },
+      "initialization": {
+        "critic_mode": "reset_zero",
+        "init_contains_critic": false,
+        "init_critic_shapes": null,
+        "init_critic_used": false,
+        "note_it": "Il trainer corrente reinizializza sempre il critic; la diagnostica non cambia questo comportamento.",
+        "parameter_l2": {
+          "actor_head": 43.46960085919427,
+          "critic_head": 0.0,
+          "trunk": 162.07350195518126
+        }
+      },
+      "metrics": {
+        "actor_head_relative_update_p95": 0.00018199463129311977,
+        "advantage_bias_ratio_coverage": 1.0,
+        "advantage_bias_ratio_median": 0.14651639480251993,
+        "critic_explained_variance_coverage": 1.0,
+        "critic_explained_variance_median": 0.12683707015283718,
+        "critic_mean_squared_error_median": 0.03239678305698235,
+        "critic_negative_explained_variance_fraction": 0.02,
+        "global_gradient_p95_over_median": 1.9198210214570046,
+        "hidden_activation_rate_mean_median": 0.088134765625,
+        "hidden_units_never_active_fraction_max": 0.4765625,
+        "late_updates": 50,
+        "trunk_relative_update_p95": 0.0001395865951330905,
+        "updates": 100
+      },
+      "seed": 20260715
+    },
+    {
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_health_v14_v0_20260714/a2c_health_seed20260716.diagnostics.json",
+          "sha256": "aad71c52450ab9bcc2b162802e9fa7b075cb12988e2907baddc1265b005e4d22",
+          "size_bytes": 188029
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_health_v14_v0_20260714/a2c_health_seed20260716.npz",
+          "sha256": "b705fd6d050c4670fb6067b7192c6164c30c2ade3e580074d058fd49a3dd7334",
+          "size_bytes": 435620
+        }
+      },
+      "gates": {
+        "advantage": true,
+        "critic": true,
+        "gradient": true,
+        "hidden": true,
+        "integrity": true,
+        "update": true
+      },
+      "initialization": {
+        "critic_mode": "reset_zero",
+        "init_contains_critic": false,
+        "init_critic_shapes": null,
+        "init_critic_used": false,
+        "note_it": "Il trainer corrente reinizializza sempre il critic; la diagnostica non cambia questo comportamento.",
+        "parameter_l2": {
+          "actor_head": 43.46960085919427,
+          "critic_head": 0.0,
+          "trunk": 162.07350195518126
+        }
+      },
+      "metrics": {
+        "actor_head_relative_update_p95": 0.00018552380090645497,
+        "advantage_bias_ratio_coverage": 1.0,
+        "advantage_bias_ratio_median": 0.17387051303301942,
+        "critic_explained_variance_coverage": 1.0,
+        "critic_explained_variance_median": 0.12977815999864645,
+        "critic_mean_squared_error_median": 0.03437284297503283,
+        "critic_negative_explained_variance_fraction": 0.0,
+        "global_gradient_p95_over_median": 1.9905585230146534,
+        "hidden_activation_rate_mean_median": 0.0869677734375,
+        "hidden_units_never_active_fraction_max": 0.48046875,
+        "late_updates": 50,
+        "trunk_relative_update_p95": 0.00014620341477709838,
+        "updates": 100
+      },
+      "seed": 20260716
+    }
+  ],
+  "schema": "briscola.a2c_health_probe.v1",
+  "versions": {
+    "code": "0.36.0",
+    "git_commit": "116d4760afafd852531c27e6e06e1d46075d6585",
+    "numpy": "2.4.6",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

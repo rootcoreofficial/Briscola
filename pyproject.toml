@@ -1,0 +1,81 @@
+[project]
+name = "briscola-ai"
+version = "0.39.0"
+description = "A Briscola card game with AI capabilities"
+authors = []
+requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+    # `[standard]` include `fastapi-cli`: necessario perche' FastAPI Cloud avvia l'app con `fastapi run`.
+    "fastapi[standard]>=0.128.0",
+    "uvicorn[standard]>=0.40.0",
+    "pydantic>=2.12.0",
+    "numpy>=2.4.0",
+    "jinja2>=3.1.6",
+    # Rendering del diario di bordo (/diario) da `static/diario.md`.
+    "markdown>=3.6",
+    "rich>=13.9.0",
+    "numba>=0.65.1",
+    # Game store condiviso (Fase 1): import lazy, usato solo se REDIS_URL e' impostata.
+    "redis>=5.0.0",
+    # Event log persistente su Postgres (Fase 1): import lazy, usato solo se DATABASE_URL e' impostata.
+    "psycopg[binary]>=3.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.0",
+    "pytest-cov>=7.0.0",
+    "coverage>=7.13.0",
+    "ruff>=0.9.0",
+    "mypy>=1.14.0",
+    "fakeredis>=2.21.0",
+    # Load test dell'infrastruttura (scripts/loadtest/): bot che giocano partite vere.
+    "locust>=2.32.0",
+    # Solo per ispezione UI in locale (es. verifica layout/overlap). NON usato in prod.
+    # Richiede anche `python -m playwright install chromium` per scaricare il browser.
+    "playwright>=1.60.0",
+]
+
+[project.scripts]
+briscola-server = "briscola_ai.main:run_server"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 120
+extend-exclude = ["src/briscola_ai.egg-info"]
+
+[tool.ruff.lint]
+# E/F/I = base storica; B (bugbear) intercetta bug latenti, UP modernizza la sintassi,
+# SIM segnala semplificazioni. Introdotte dopo aver sistemato il fallout sull'intero repo.
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Marker espliciti: `pytest -m "not slow"` permette un ciclo rapido locale saltando
+# i test che compilano kernel Numba o lanciano script in subprocess.
+markers = [
+  "slow: test lenti (subprocess di script interi o run lunghe)",
+  "numba: test che compilano kernel @njit (lenti al primo run, poi cache)",
+]
+
+[tool.mypy]
+python_version = "3.14"
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unreachable = true
+no_implicit_optional = true
+# `check_untyped_defs`: mypy controlla anche i corpi delle funzioni senza annotazioni
+# (con false il type-checking mordeva poco). `disallow_untyped_defs` resta off:
+# obbligare le annotazioni ovunque sarebbe troppo invasivo per un progetto didattico.
+check_untyped_defs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+exclude = [
+  "^src/briscola_ai\\.egg-info/",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

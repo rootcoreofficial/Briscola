@@ -1,0 +1,93 @@
+{
+  "artifacts": {
+    "belief_model": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "model": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    },
+    "opponent_belief_model": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    }
+  },
+  "avg_point_diff_ci95": {
+    "confidence": 0.95,
+    "high": 0.620664474119915,
+    "low": -0.024664474119915014
+  },
+  "belief_model": "data/models/belief_v0_h128_50k_seed20260702.npz",
+  "belief_uniform_mix": 0.1,
+  "determinizations": 32,
+  "elapsed_seconds": 222.00567804201273,
+  "max_unknown_cards": 8,
+  "model": "data/models/best_a2c_v14.npz",
+  "num_games": 2000,
+  "numba_search": false,
+  "opponent": "pimc",
+  "opponent_belief_model": "data/models/belief_v0_h128_50k_seed20260702.npz",
+  "opponent_belief_uniform_mix": 0.1,
+  "opponent_determinizations": 16,
+  "opponent_max_unknown_cards": 8,
+  "opponent_metrics": {
+    "coerced_moves": 0,
+    "completed_rollouts": 240000,
+    "endgame_solver_decisions": 6000,
+    "failed_determinizations": 0,
+    "failed_rollouts": 0,
+    "fallback_decisions": 29000,
+    "search_decisions": 5000,
+    "search_elapsed_seconds": 72.49894623845466,
+    "seconds_per_search_decision": 0.014499789247690933,
+    "successful_determinizations": 80000,
+    "total_decisions": 40000
+  },
+  "opponent_numba_search": false,
+  "pimc_metrics": {
+    "coerced_moves": 0,
+    "completed_rollouts": 480000,
+    "endgame_solver_decisions": 6000,
+    "failed_determinizations": 0,
+    "failed_rollouts": 0,
+    "fallback_decisions": 29000,
+    "search_decisions": 5000,
+    "search_elapsed_seconds": 144.63993174949428,
+    "seconds_per_search_decision": 0.028927986349898856,
+    "successful_determinizations": 160000,
+    "total_decisions": 40000
+  },
+  "schema": "briscola.pimc_evaluation.v1",
+  "score_rate": 0.508,
+  "score_rate_ci95": {
+    "confidence": 0.95,
+    "high": 0.5167004975145785,
+    "low": 0.49929950248542154
+  },
+  "seconds_per_game": 0.11100283902100637,
+  "seed": 20260712,
+  "stats": {
+    "agent_a_name": "pimc(best_a2c_v14.npz,d=32,u=8,belief=belief_v0_h128_50k_seed20260702.npz,mix=0.1)",
+    "agent_b_name": "pimc(best_a2c_v14.npz,d=16,u=8,belief=belief_v0_h128_50k_seed20260702.npz,mix=0.1)",
+    "avg_point_diff_agent_a_minus_agent_b": 0.298,
+    "avg_points_agent_a": 60.149,
+    "avg_points_agent_b": 59.851,
+    "draws": 60,
+    "num_games": 2000,
+    "sum_sq_pair_point_diff_agent_a_minus_agent_b": 108656.0,
+    "sum_sq_pair_score_agent_a": 277.75,
+    "sum_sq_point_diff_agent_a_minus_agent_b": 1341912.0,
+    "wins_agent_a": 986,
+    "wins_agent_b": 954
+  },
+  "use_endgame_solver": true,
+  "versions": {
+    "code": "0.36.0",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

@@ -1,0 +1,976 @@
+{
+  "aggregate": {
+    "direct_same_decks_point_diff": {
+      "count": 3,
+      "max": 0.1455,
+      "mean": -0.08016666666666666,
+      "median": -0.148,
+      "min": -0.238,
+      "sample_std": 0.2005469604190832
+    },
+    "regimes": {
+      "paired_same_decks": {
+        "actor_relative_delta_from_init": {
+          "count": 3,
+          "max": 0.017900184418331088,
+          "mean": 0.017810248739140527,
+          "median": 0.017870305278885137,
+          "min": 0.017660256520205354,
+          "sample_std": 0.0001307533557861143
+        },
+        "advantage_mean_std": {
+          "count": 3,
+          "max": 0.037704212508025345,
+          "mean": 0.037352158375323664,
+          "median": 0.037554885039684995,
+          "min": 0.036797377578260654,
+          "sample_std": 0.0004862211151242165
+        },
+        "elapsed_seconds": {
+          "count": 3,
+          "max": 112.35135516698938,
+          "mean": 110.84503341699019,
+          "median": 111.36245858398615,
+          "min": 108.82128649999504,
+          "sample_std": 1.8210279517361607
+        },
+        "global_gradient_cv": {
+          "count": 3,
+          "max": 0.38419539142765186,
+          "mean": 0.37705748230331837,
+          "median": 0.3749817102736904,
+          "min": 0.3719953452086127,
+          "sample_std": 0.006359394945740669
+        },
+        "vs_v14_point_diff": {
+          "count": 3,
+          "max": 0.203,
+          "mean": 0.16383333333333336,
+          "median": 0.1545,
+          "min": 0.134,
+          "sample_std": 0.03543421134064273
+        }
+      },
+      "paired_same_games": {
+        "actor_relative_delta_from_init": {
+          "count": 3,
+          "max": 0.012886498942755986,
+          "mean": 0.012835914819573151,
+          "median": 0.012828917961875694,
+          "min": 0.012792327554087777,
+          "sample_std": 4.747398892186743e-05
+        },
+        "advantage_mean_std": {
+          "count": 3,
+          "max": 0.03815297256577837,
+          "mean": 0.03699053743793843,
+          "median": 0.03673735789906353,
+          "min": 0.0360812818489734,
+          "sample_std": 0.0010587967301152069
+        },
+        "elapsed_seconds": {
+          "count": 3,
+          "max": 56.89318633300718,
+          "mean": 55.90398508333601,
+          "median": 55.992267041991,
+          "min": 54.82650187500985,
+          "sample_std": 1.036166704927299
+        },
+        "global_gradient_cv": {
+          "count": 3,
+          "max": 0.38279542500246827,
+          "mean": 0.3762991805962162,
+          "median": 0.3819931532431368,
+          "min": 0.36410896354304356,
+          "sample_std": 0.010564655879230106
+        },
+        "vs_v14_point_diff": {
+          "count": 3,
+          "max": 0.361,
+          "mean": 0.13583333333333333,
+          "median": 0.334,
+          "min": -0.2875,
+          "sample_std": 0.3668658928455102
+        }
+      },
+      "serial_same_games": {
+        "actor_relative_delta_from_init": {
+          "count": 3,
+          "max": 0.012804808473377088,
+          "mean": 0.012661933656300734,
+          "median": 0.012651494206010203,
+          "min": 0.012529498289514912,
+          "sample_std": 0.00013795166155698412
+        },
+        "advantage_mean_std": {
+          "count": 3,
+          "max": 0.03961551015811917,
+          "mean": 0.03755639906064539,
+          "median": 0.037033954419687584,
+          "min": 0.03601973260412941,
+          "sample_std": 0.0018539458882592256
+        },
+        "elapsed_seconds": {
+          "count": 3,
+          "max": 53.69107758300379,
+          "mean": 52.40735923600732,
+          "median": 52.20428095801617,
+          "min": 51.32671916700201,
+          "sample_std": 1.195189637703364
+        },
+        "global_gradient_cv": {
+          "count": 3,
+          "max": 0.3811850579479231,
+          "mean": 0.3716404400680764,
+          "median": 0.3678566237298101,
+          "min": 0.3658796385264958,
+          "sample_std": 0.008324777202889523
+        },
+        "vs_v14_point_diff": {
+          "count": 3,
+          "max": 0.3065,
+          "mean": 0.16033333333333336,
+          "median": 0.2105,
+          "min": -0.036,
+          "sample_std": 0.17667507841609506
+        }
+      }
+    }
+  },
+  "decision": {
+    "direct_nonnegative_seed_count": 1,
+    "direct_same_games_point_diff": {
+      "count": 3,
+      "max": 0.242,
+      "mean": -0.12350000000000001,
+      "median": -0.151,
+      "min": -0.4615,
+      "sample_std": 0.35255531480889635
+    },
+    "explanation_it": "I tre seed non mostrano insieme non-regressione e riduzione della variabilità: manca evidenza per sostituire la schedule seriale.",
+    "gradient_cv_ratio_paired_over_serial": 1.038429454851165,
+    "stop_strength": false,
+    "stop_variance": false,
+    "strength_between_seed_std_ratio_paired_over_serial": 2.076500523641985,
+    "variance_signal": false,
+    "verdict": "inconclusive_keep_serial"
+  },
+  "direct_evaluations": {
+    "paired_same_decks_vs_serial": [
+      {
+        "artifact": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_decks_vs_serial_seed20260717.json",
+          "sha256": "d09df2a2b1e347f6bac4b09d64e03425266111cd6aeb295c6b7e571d4be7d01a",
+          "size_bytes": 980
+        },
+        "seed": 20260717,
+        "summary": {
+          "avg_point_diff_agent_a_minus_agent_b": -0.238,
+          "avg_point_diff_ci95": {
+            "confidence": 0.95,
+            "high": 0.21968387607579248,
+            "low": -0.6956838760757924
+          },
+          "draws": 109,
+          "num_games": 4000,
+          "score_rate_agent_a": 0.497875,
+          "score_rate_ci95": {
+            "confidence": 0.95,
+            "high": 0.5076492191379581,
+            "low": 0.48810078086204184
+          },
+          "wins_agent_a": 1937,
+          "wins_agent_b": 1954
+        }
+      },
+      {
+        "artifact": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_decks_vs_serial_seed20260718.json",
+          "sha256": "980b1ea2f616eddcc699aeb21e1f815a9fc5a9900ca7c00c7ba7cb090c11cb38",
+          "size_bytes": 984
+        },
+        "seed": 20260718,
+        "summary": {
+          "avg_point_diff_agent_a_minus_agent_b": 0.1455,
+          "avg_point_diff_ci95": {
+            "confidence": 0.95,
+            "high": 0.5879209718571249,
+            "low": -0.29692097185712485
+          },
+          "draws": 119,
+          "num_games": 4000,
+          "score_rate_agent_a": 0.499125,
+          "score_rate_ci95": {
+            "confidence": 0.95,
+            "high": 0.5081521925925022,
+            "low": 0.4900978074074978
+          },
+          "wins_agent_a": 1937,
+          "wins_agent_b": 1944
+        }
+      },
+      {
+        "artifact": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_decks_vs_serial_seed20260719.json",
+          "sha256": "c81478b99062663c37dd921cac244a6c340ec5e9bb2f4844f0ca63c37edcda14",
+          "size_bytes": 980
+        },
+        "seed": 20260719,
+        "summary": {
+          "avg_point_diff_agent_a_minus_agent_b": -0.148,
+          "avg_point_diff_ci95": {
+            "confidence": 0.95,
+            "high": 0.2768989769387671,
+            "low": -0.572898976938767
+          },
+          "draws": 127,
+          "num_games": 4000,
+          "score_rate_agent_a": 0.500875,
+          "score_rate_ci95": {
+            "confidence": 0.95,
+            "high": 0.5098152926556994,
+            "low": 0.49193470734430056
+          },
+          "wins_agent_a": 1940,
+          "wins_agent_b": 1933
+        }
+      }
+    ],
+    "paired_same_games_vs_serial": [
+      {
+        "artifact": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_games_vs_serial_seed20260717.json",
+          "sha256": "09271e3063aebd6f84919a69f9adacde7766675c4e8d0ec75662ef578013a5c5",
+          "size_bytes": 979
+        },
+        "seed": 20260717,
+        "summary": {
+          "avg_point_diff_agent_a_minus_agent_b": -0.151,
+          "avg_point_diff_ci95": {
+            "confidence": 0.95,
+            "high": 0.3131666569336039,
+            "low": -0.6151666569336038
+          },
+          "draws": 122,
+          "num_games": 4000,
+          "score_rate_agent_a": 0.4985,
+          "score_rate_ci95": {
+            "confidence": 0.95,
+            "high": 0.5084721184769209,
+            "low": 0.48852788152307913
+          },
+          "wins_agent_a": 1933,
+          "wins_agent_b": 1945
+        }
+      },
+      {
+        "artifact": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_games_vs_serial_seed20260718.json",
+          "sha256": "10231e9dec37c1a932041961989d7df05cf95146cf3420936bb4a4ea51defd4b",
+          "size_bytes": 984
+        },
+        "seed": 20260718,
+        "summary": {
+          "avg_point_diff_agent_a_minus_agent_b": -0.4615,
+          "avg_point_diff_ci95": {
+            "confidence": 0.95,
+            "high": -0.00385777353040212,
+            "low": -0.9191422264695979
+          },
+          "draws": 124,
+          "num_games": 4000,
+          "score_rate_agent_a": 0.4905,
+          "score_rate_ci95": {
+            "confidence": 0.95,
+            "high": 0.49974455999299255,
+            "low": 0.48125544000700743
+          },
+          "wins_agent_a": 1900,
+          "wins_agent_b": 1976
+        }
+      },
+      {
+        "artifact": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_games_vs_serial_seed20260719.json",
+          "sha256": "66be7af7437dc3fdaa549811b1b1c8d7ff069d89b4fdb001b17935d82429d8f0",
+          "size_bytes": 976
+        },
+        "seed": 20260719,
+        "summary": {
+          "avg_point_diff_agent_a_minus_agent_b": 0.242,
+          "avg_point_diff_ci95": {
+            "confidence": 0.95,
+            "high": 0.6843104275455907,
+            "low": -0.20031042754559075
+          },
+          "draws": 138,
+          "num_games": 4000,
+          "score_rate_agent_a": 0.50125,
+          "score_rate_ci95": {
+            "confidence": 0.95,
+            "high": 0.510287081011956,
+            "low": 0.49221291898804403
+          },
+          "wins_agent_a": 1936,
+          "wins_agent_b": 1926
+        }
+      }
+    ]
+  },
+  "environment_alignment": {
+    "20260717": {
+      "paired_same_decks_environment_count": 20000,
+      "paired_same_decks_matches_serial_environments": true,
+      "paired_same_games_environment_count": 10000,
+      "paired_same_games_uses_serial_environment_prefix": true,
+      "serial_environment_count": 20000
+    },
+    "20260718": {
+      "paired_same_decks_environment_count": 20000,
+      "paired_same_decks_matches_serial_environments": true,
+      "paired_same_games_environment_count": 10000,
+      "paired_same_games_uses_serial_environment_prefix": true,
+      "serial_environment_count": 20000
+    },
+    "20260719": {
+      "paired_same_decks_environment_count": 20000,
+      "paired_same_decks_matches_serial_environments": true,
+      "paired_same_games_environment_count": 10000,
+      "paired_same_games_uses_serial_environment_prefix": true,
+      "serial_environment_count": 20000
+    }
+  },
+  "inputs": {
+    "belief_model": {
+      "path": "data/models/belief_v0_h128_50k_seed20260702.npz",
+      "sha256": "4100b23b65a5566e047230ced665b91eef1942ea31e4a4cbe201b64545e7d035",
+      "size_bytes": 214056
+    },
+    "init_model": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    },
+    "opponent_model": {
+      "path": "data/models/best_a2c_v14.npz",
+      "sha256": "a67ed1d7f01ba1019f157134ade23fa9f822e442b671c83684bd4500e97695a8",
+      "size_bytes": 429388
+    },
+    "value_model": {
+      "path": "data/models/value_v1_v4_fullgame_h128_seed20260718.npz",
+      "sha256": "5e340ee7fc9d636fa34ccc830dde53ed2b63580591cadc98dd3e41faad9c7fca",
+      "size_bytes": 229772
+    }
+  },
+  "protocol": {
+    "base_games": 20000,
+    "eval_games": 4000,
+    "eval_seed_start": 4000000,
+    "primary_comparison": "paired_same_games_vs_serial_same_games",
+    "regimes": [
+      {
+        "game_multiplier": 1,
+        "name": "serial_same_games",
+        "schedule": "serial"
+      },
+      {
+        "game_multiplier": 1,
+        "name": "paired_same_games",
+        "schedule": "paired"
+      },
+      {
+        "game_multiplier": 2,
+        "name": "paired_same_decks",
+        "schedule": "paired"
+      }
+    ],
+    "same_decks_is_supportive_only": true,
+    "seeds": [
+      20260717,
+      20260718,
+      20260719
+    ],
+    "thresholds": {
+      "direct_median_point_diff_min": 0.0,
+      "direct_nonnegative_seed_count_min": 2,
+      "gradient_cv_ratio_max": 1.0,
+      "stop_direct_median_point_diff_max": -0.25,
+      "stop_negative_seed_count_min": 2,
+      "stop_variance_ratio_min": 1.1,
+      "strength_between_seed_std_ratio_max": 1.0
+    },
+    "update_every": 20
+  },
+  "recipe": {
+    "bc_anchor_beta": 0.01,
+    "encoder_version": "v4",
+    "fast_rollout": "numba",
+    "opponent_mix": "bc_model:0.15,bc_model_pimc_belief:0.40,bc_model_value_lookahead_8x8:0.20,heuristic_trump_saver:0.12,heuristic_v1:0.04,heuristic_v2:0.06,random:0.03",
+    "opponent_pimc_determinizations": 16,
+    "opponent_value_max_unknown_cards": 8,
+    "overkill_penalty_beta": 0.3,
+    "overkill_penalty_mode": "gap",
+    "rollout_engine": "fast"
+  },
+  "reference_evaluations": [
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_serial_same_games_seed20260717_vs_v14.json",
+        "sha256": "2af09285bd47761b4bc15605fcc9a839ee0e8654d8450a1a728610fdad89c4b2",
+        "size_bytes": 933
+      },
+      "regime": "serial_same_games",
+      "seed": 20260717,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.3065,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.7217498245107856,
+          "low": -0.10874982451078558
+        },
+        "draws": 118,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.50425,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5129535595545758,
+          "low": 0.4955464404454242
+        },
+        "wins_agent_a": 1958,
+        "wins_agent_b": 1924
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_games_seed20260717_vs_v14.json",
+        "sha256": "c3beb6366b9fc29b9c7fc607b745e8b7467ffea2a1e0dc7698a1e2f3cd93d0be",
+        "size_bytes": 928
+      },
+      "regime": "paired_same_games",
+      "seed": 20260717,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.334,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.7435999258965329,
+          "low": -0.07559992589653292
+        },
+        "draws": 128,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.503,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5118685906220324,
+          "low": 0.4941314093779676
+        },
+        "wins_agent_a": 1948,
+        "wins_agent_b": 1924
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_decks_seed20260717_vs_v14.json",
+        "sha256": "a70344491636542ef76264f6aa41a7ed4960bdd2549d43e2935e719100f7e5ed",
+        "size_bytes": 930
+      },
+      "regime": "paired_same_decks",
+      "seed": 20260717,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.203,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.6195741152626713,
+          "low": -0.21357411526267128
+        },
+        "draws": 114,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.501,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5098964990702587,
+          "low": 0.49210350092974137
+        },
+        "wins_agent_a": 1947,
+        "wins_agent_b": 1939
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_serial_same_games_seed20260718_vs_v14.json",
+        "sha256": "7eeba8353dc3975d086e2e71389def476caa3eeedd213ddeb27603142d2d634c",
+        "size_bytes": 933
+      },
+      "regime": "serial_same_games",
+      "seed": 20260718,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.2105,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.6417513236907987,
+          "low": -0.22075132369079872
+        },
+        "draws": 114,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.50125,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5099138919062659,
+          "low": 0.49258610809373404
+        },
+        "wins_agent_a": 1948,
+        "wins_agent_b": 1938
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_games_seed20260718_vs_v14.json",
+        "sha256": "ab58cdc2b8590829c64dbc5546297cd32e12c01c42bd952b6201f49ac9af8722",
+        "size_bytes": 935
+      },
+      "regime": "paired_same_games",
+      "seed": 20260718,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": -0.2875,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.11736070662250742,
+          "low": -0.6923607066225074
+        },
+        "draws": 127,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.496875,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5053946885775394,
+          "low": 0.4883553114224606
+        },
+        "wins_agent_a": 1924,
+        "wins_agent_b": 1949
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_decks_seed20260718_vs_v14.json",
+        "sha256": "0be9925a5621b253ce737863ed9b4731b4132cd2f764775fe4e13f03580089cf",
+        "size_bytes": 928
+      },
+      "regime": "paired_same_decks",
+      "seed": 20260718,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.134,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.5850068233584362,
+          "low": -0.3170068233584362
+        },
+        "draws": 114,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.5015,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5107016386083557,
+          "low": 0.4922983613916442
+        },
+        "wins_agent_a": 1949,
+        "wins_agent_b": 1937
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_serial_same_games_seed20260719_vs_v14.json",
+        "sha256": "94f9c5414f1bc3d33aa960b0226a467d7b9be41d7d313dc7104a708b9595071e",
+        "size_bytes": 930
+      },
+      "regime": "serial_same_games",
+      "seed": 20260719,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": -0.036,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.3604620586335975,
+          "low": -0.43246205863359743
+        },
+        "draws": 125,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.497875,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5061955903868065,
+          "low": 0.4895544096131935
+        },
+        "wins_agent_a": 1929,
+        "wins_agent_b": 1946
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_games_seed20260719_vs_v14.json",
+        "sha256": "1e2b4c2ca6a98d40c363304c126a989b866426bec846e845b1d8aa037ecfb509",
+        "size_bytes": 931
+      },
+      "regime": "paired_same_games",
+      "seed": 20260719,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.361,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.7626818895190609,
+          "low": -0.04068188951906093
+        },
+        "draws": 127,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.501375,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.5099657673218805,
+          "low": 0.49278423267811955
+        },
+        "wins_agent_a": 1942,
+        "wins_agent_b": 1931
+      }
+    },
+    {
+      "artifact": {
+        "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/eval_paired_same_decks_seed20260719_vs_v14.json",
+        "sha256": "28048f24518dd4008b7cb128ead3277dcec5b6bf1e0dfba088e905111287bfd2",
+        "size_bytes": 932
+      },
+      "regime": "paired_same_decks",
+      "seed": 20260719,
+      "summary": {
+        "avg_point_diff_agent_a_minus_agent_b": 0.1545,
+        "avg_point_diff_ci95": {
+          "confidence": 0.95,
+          "high": 0.6051841282174275,
+          "low": -0.29618412821742757
+        },
+        "draws": 118,
+        "num_games": 4000,
+        "score_rate_agent_a": 0.50375,
+        "score_rate_ci95": {
+          "confidence": 0.95,
+          "high": 0.512878323562517,
+          "low": 0.4946216764374831
+        },
+        "wins_agent_a": 1956,
+        "wins_agent_b": 1926
+      }
+    }
+  ],
+  "runs": [
+    {
+      "actor_relative_delta_from_init": 0.012529498289514912,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260717.diagnostics.json",
+          "sha256": "00b17ffddc9a218fdcb630c2aed79cab5f57f57121d0a9e5be34a56b0a1053b2",
+          "size_bytes": 1807597
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260717.npz",
+          "sha256": "31236ad8276c433cc928e7ee77709e55087e256adb799a3622ca8aac75c47e9e",
+          "size_bytes": 437204
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260717.receipt.json",
+          "sha256": "68a42af832cf2f144040c4249d3e9dd685d33e38434d3339f8d08c0df8f2b6d8",
+          "size_bytes": 2405
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.03961551015811917,
+        "global_gradient_cv": 0.3658796385264958,
+        "global_gradient_p95_over_median": 1.8429491586083546,
+        "late_critic_explained_variance_median": 0.1467749742946492,
+        "updates": 1000
+      },
+      "elapsed_seconds": 52.20428095801617,
+      "environment_draws": 20000,
+      "num_games": 20000,
+      "regime": "serial_same_games",
+      "schedule": "serial",
+      "schedule_sha256": "c7b6a62280d795162ca670c6aaf8e4806309e5059fc64fb6aa12aff22b425d00",
+      "seed": 20260717
+    },
+    {
+      "actor_relative_delta_from_init": 0.012792327554087777,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260717.diagnostics.json",
+          "sha256": "b8e816c09e7d1918a1f3dd4d95cc87168c1a429f41944034d9857456f1352321",
+          "size_bytes": 1807570
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260717.npz",
+          "sha256": "331f6213217c4f04743224ffd28c242dcc0d32a71be49f0d630c17f149d60843",
+          "size_bytes": 437356
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260717.receipt.json",
+          "sha256": "734376796e4e941c91ccfc1e1dfaa96cf1066c6194d958522ef8b83f58298447",
+          "size_bytes": 2384
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.0360812818489734,
+        "global_gradient_cv": 0.36410896354304356,
+        "global_gradient_p95_over_median": 1.8233348613790907,
+        "late_critic_explained_variance_median": 0.15049172352849943,
+        "updates": 1000
+      },
+      "elapsed_seconds": 55.992267041991,
+      "environment_draws": 10000,
+      "num_games": 20000,
+      "regime": "paired_same_games",
+      "schedule": "paired",
+      "schedule_sha256": "e5dd3b867cf173a9016b060dbd8ace6514bd0a2c52f1fb51ec726719c711db69",
+      "seed": 20260717
+    },
+    {
+      "actor_relative_delta_from_init": 0.017900184418331088,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260717.diagnostics.json",
+          "sha256": "3fbc84c8acac49763a136d8d8f902cf83dd2d24027d9d3209a269ef7509c1aa5",
+          "size_bytes": 3608200
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260717.npz",
+          "sha256": "934333b88810a112e16590060d9f83892b58e47f0bc3c1a9c6249ae942767bfb",
+          "size_bytes": 437356
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260717.receipt.json",
+          "sha256": "fedeb9b8b80be3b7334f393575dcbd2ff2b835b6f70397e16739f99b55a2b47e",
+          "size_bytes": 2387
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.036797377578260654,
+        "global_gradient_cv": 0.3719953452086127,
+        "global_gradient_p95_over_median": 1.8870884623799027,
+        "late_critic_explained_variance_median": 0.1534903096279165,
+        "updates": 2000
+      },
+      "elapsed_seconds": 108.82128649999504,
+      "environment_draws": 20000,
+      "num_games": 40000,
+      "regime": "paired_same_decks",
+      "schedule": "paired",
+      "schedule_sha256": "db0b4c3d6f12a2a990f736ea202134c1cc3ff060fcacae62d0da443ffcc13929",
+      "seed": 20260717
+    },
+    {
+      "actor_relative_delta_from_init": 0.012651494206010203,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260718.diagnostics.json",
+          "sha256": "7dda4bbaedf9dc58816895b5b01a1048b7ddf20cdb9ee49060b5f792f9cdcb39",
+          "size_bytes": 1807733
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260718.npz",
+          "sha256": "cd77025fe65bb8f063764cf507cdaf20e35efdd6e24828d12294b2751e35098f",
+          "size_bytes": 437204
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260718.receipt.json",
+          "sha256": "0f7912ec124978c519495f8dce944d54fdfc53388a6a2a9a7a1a6386c6d273a9",
+          "size_bytes": 2405
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.03601973260412941,
+        "global_gradient_cv": 0.3678566237298101,
+        "global_gradient_p95_over_median": 1.9068696459530003,
+        "late_critic_explained_variance_median": 0.14723492938725496,
+        "updates": 1000
+      },
+      "elapsed_seconds": 51.32671916700201,
+      "environment_draws": 20000,
+      "num_games": 20000,
+      "regime": "serial_same_games",
+      "schedule": "serial",
+      "schedule_sha256": "0a767ab8978cf5b501c9f6428c9ab13313c2961a021f2a931ce1d2a2ee16795b",
+      "seed": 20260718
+    },
+    {
+      "actor_relative_delta_from_init": 0.012886498942755986,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260718.diagnostics.json",
+          "sha256": "9050f1aa8de07df6c7ce05f229de6ba79a21bb7a5e16a79e7b292191bac971da",
+          "size_bytes": 1807813
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260718.npz",
+          "sha256": "124628a1c5a288e8ae7f7baf65bf12a046544688783e51e841a0ff0a4a8d4573",
+          "size_bytes": 437376
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260718.receipt.json",
+          "sha256": "a4792aeeb291e1fe2a70dc698c06d78a80dfc41c5136c48c85954410decdabe9",
+          "size_bytes": 2386
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.03673735789906353,
+        "global_gradient_cv": 0.3819931532431368,
+        "global_gradient_p95_over_median": 1.9470382324146582,
+        "late_critic_explained_variance_median": 0.15173721724018296,
+        "updates": 1000
+      },
+      "elapsed_seconds": 54.82650187500985,
+      "environment_draws": 10000,
+      "num_games": 20000,
+      "regime": "paired_same_games",
+      "schedule": "paired",
+      "schedule_sha256": "7eb0fefd04a78ec6858a215b0fac6c14e18b312f3629ad6402c073050858de6d",
+      "seed": 20260718
+    },
+    {
+      "actor_relative_delta_from_init": 0.017660256520205354,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260718.diagnostics.json",
+          "sha256": "63648567f3e207135ad9c23a3b25e08308ff915e5ba677fdf64dbd9f3afa1f75",
+          "size_bytes": 3608962
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260718.npz",
+          "sha256": "6e76891e64ab6c702ec43cf1c5c55aa7a80fbb809e1599ec61210021d93c2911",
+          "size_bytes": 437360
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260718.receipt.json",
+          "sha256": "487902e208d70e6bd5747fb280f68d2ceaf41e85c87f49876f70a29586a2a440",
+          "size_bytes": 2387
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.037704212508025345,
+        "global_gradient_cv": 0.38419539142765186,
+        "global_gradient_p95_over_median": 1.9097586423801507,
+        "late_critic_explained_variance_median": 0.1472344530771839,
+        "updates": 2000
+      },
+      "elapsed_seconds": 111.36245858398615,
+      "environment_draws": 20000,
+      "num_games": 40000,
+      "regime": "paired_same_decks",
+      "schedule": "paired",
+      "schedule_sha256": "b6084aaf7436668c88218cc2791b89bf16cc163d111f2d689ea773a5c527e603",
+      "seed": 20260718
+    },
+    {
+      "actor_relative_delta_from_init": 0.012804808473377088,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260719.diagnostics.json",
+          "sha256": "c6b77e59a1cf81e9b755e77fb1727ed5fa3b3907d493e0b81bca6b9cfd77b456",
+          "size_bytes": 1807831
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260719.npz",
+          "sha256": "80f09a504034d0ba6f4b9acb0f25afbd13bcc0825f87d28200086d056cff939e",
+          "size_bytes": 437260
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/serial_same_games_g20000_seed20260719.receipt.json",
+          "sha256": "208995dfaa734c9b85336798422fa6c1a3fbf8f3c171f74ce20962b442f5cd8b",
+          "size_bytes": 2405
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.037033954419687584,
+        "global_gradient_cv": 0.3811850579479231,
+        "global_gradient_p95_over_median": 1.8959777313204897,
+        "late_critic_explained_variance_median": 0.1471711155412595,
+        "updates": 1000
+      },
+      "elapsed_seconds": 53.69107758300379,
+      "environment_draws": 20000,
+      "num_games": 20000,
+      "regime": "serial_same_games",
+      "schedule": "serial",
+      "schedule_sha256": "ba22720138754aa9b7a87d66bde7593527d3901b720597dde75c42f1f18f5120",
+      "seed": 20260719
+    },
+    {
+      "actor_relative_delta_from_init": 0.012828917961875694,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260719.diagnostics.json",
+          "sha256": "7a9964d1fe0247e98c58ff577b8588b6cb460b79718616f34c64418d15e4f4f9",
+          "size_bytes": 1808009
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260719.npz",
+          "sha256": "d90e031fb0ca4c1162d0834baed1d1d893da81b0106975ab5fccf9251ccdd136",
+          "size_bytes": 437364
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_games_g20000_seed20260719.receipt.json",
+          "sha256": "74f8f3b24c4c487f50c53c6d2da0641b4e2dbd1d305fb8a4a7fffcc1817d0018",
+          "size_bytes": 2386
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.03815297256577837,
+        "global_gradient_cv": 0.38279542500246827,
+        "global_gradient_p95_over_median": 1.8998913885055877,
+        "late_critic_explained_variance_median": 0.15011955621410938,
+        "updates": 1000
+      },
+      "elapsed_seconds": 56.89318633300718,
+      "environment_draws": 10000,
+      "num_games": 20000,
+      "regime": "paired_same_games",
+      "schedule": "paired",
+      "schedule_sha256": "7fbbcb01e6a38022ab98bf0ebedc3d7d2f0c7201771bd79bc55fd7b01a5c8b87",
+      "seed": 20260719
+    },
+    {
+      "actor_relative_delta_from_init": 0.017870305278885137,
+      "artifacts": {
+        "diagnostics": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260719.diagnostics.json",
+          "sha256": "948d6b7470f8869d7dc9e2576635decbf4f2b728d4199fdedce71d685a24fae3",
+          "size_bytes": 3609016
+        },
+        "model": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260719.npz",
+          "sha256": "fe813903f3ce35a1654a943c8d371810b94386f2aaf50fffda274cd2f59a6313",
+          "size_bytes": 437364
+        },
+        "receipt": {
+          "path": "benchmarks/experiments/a2c_paired_schedule_v0_20260714/paired_same_decks_g40000_seed20260719.receipt.json",
+          "sha256": "ceb43ed82c64609be186d58f3d0f8d91845ff06b8b89fc97927601b8dce97e1b",
+          "size_bytes": 2387
+        }
+      },
+      "diagnostics": {
+        "advantage_mean_std": 0.037554885039684995,
+        "global_gradient_cv": 0.3749817102736904,
+        "global_gradient_p95_over_median": 1.8704808523460292,
+        "late_critic_explained_variance_median": 0.14883468803411598,
+        "updates": 2000
+      },
+      "elapsed_seconds": 112.35135516698938,
+      "environment_draws": 20000,
+      "num_games": 40000,
+      "regime": "paired_same_decks",
+      "schedule": "paired",
+      "schedule_sha256": "fa5deb6caece2c1beb562f5f32121217728a0eda4437dca3c766a3a1702d27c9",
+      "seed": 20260719
+    }
+  ],
+  "schema": "briscola.a2c_paired_schedule_probe.v1",
+  "versions": {
+    "code": "0.36.0",
+    "git_commit": "df775fbd066e16e555267ed69b00865cdd9fcd1d",
+    "numpy": "2.4.6",
+    "python": "3.14.0",
+    "rules": "1"
+  }
+}

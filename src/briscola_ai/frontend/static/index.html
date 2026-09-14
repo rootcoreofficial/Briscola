@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briscola AI — Gioca a Briscola online contro l'intelligenza artificiale</title>
+    <meta name="description" content="Gioca gratis a Briscola contro un'IA allenata con milioni di partite di reinforcement learning. Avversari di ogni livello, dall'euristica classica alla search PIMC con belief network. Progetto didattico open source, senza registrazione.">
+    <link rel="canonical" href="https://ai.briscola.dev/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Briscola AI">
+    <meta property="og:title" content="Briscola AI — Gioca a Briscola contro l'intelligenza artificiale">
+    <meta property="og:description" content="Gioca gratis a Briscola contro un'IA allenata con milioni di partite. Progetto didattico open source.">
+    <meta property="og:url" content="https://ai.briscola.dev/">
+    <meta property="og:image" content="https://ai.briscola.dev/static/assets/icon-512.png">
+    <meta property="og:locale" content="it_IT">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/static/assets/icon-512.png?v=__BRISCOLA_ASSET_VERSION__" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png?v=__BRISCOLA_ASSET_VERSION__">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="stylesheet" href="/static/css/style.css?v=__BRISCOLA_ASSET_VERSION__">
+</head>
+<body>
+    <script>
+        // Il WebView Android include questa cartella statica nell'APK. La home web
+        // resta invariata, ma nell'app nativa l'unica entrata e' l'assistente touch.
+        if (window.Capacitor?.isNativePlatform?.()) {
+            window.location.replace('./replay.html');
+        }
+    </script>
+    <div class="container">
+        <header>
+            <h1>Briscola AI</h1>
+            <div id="game-info">
+                <span id="game-id"></span>
+                <span id="game-status">Non connesso</span>
+            </div>
+        </header>
+
+        <!-- Hero / tagline (solo schermata iniziale) -->
+        <section id="home-hero" class="home-hero">
+            <p class="home-tagline">
+                <strong>Briscola AI</strong> — gioca contro un'intelligenza artificiale addestrata da zero.<br>
+                Un progetto didattico open source per imparare il machine learning… giocando.
+            </p>
+        </section>
+
+        <!-- Setup screen -->
+        <div id="game-setup" class="panel">
+            <h2>Inizia una nuova partita</h2>
+            <form id="game-form">
+                <div class="form-group">
+                    <label for="player-name-input">Il tuo nome, se vuoi cambiarlo:</label>
+                    <input type="text" id="player-name-input" placeholder="Inserisci il tuo nome" value="Giocatore" required>
+                </div>
+                <div class="default-opponent-summary" id="default-opponent-summary">
+                    Avversario: IA consigliata, il modello più aggiornato del progetto. Puoi cambiarlo nelle opzioni avanzate.
+                </div>
+                <div class="form-group" id="data-consent-group">
+                    <label>Raccolta dati (anonima)</label>
+                    <div class="consent-row">
+                        <input type="checkbox" id="data-consent-checkbox">
+                        <label for="data-consent-checkbox" class="consent-label">
+                            Acconsento alla registrazione anonima delle mie mosse per fini di ricerca/ML.
+                        </label>
+                    </div>
+                    <div id="data-consent-description" class="help-text"></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="start-game" disabled>Avvia partita</button>
+                    <button
+                        type="button"
+                        id="advanced-options-toggle"
+                        class="secondary-button"
+                        aria-expanded="false"
+                        aria-controls="advanced-options"
+                    >
+                        Opzioni avanzate
+                    </button>
+                </div>
+                <div id="setup-error" class="setup-error hidden" role="alert"></div>
+
+                <div id="ai-agent-common-note" class="anti-cheat-callout">
+                    <div class="anti-cheat-title">Nota anti-cheat</div>
+                    <div id="ai-agent-common-note-text" class="anti-cheat-body">
+                        L'IA non bara: non conosce le tue carte e non sa quali carte usciranno dal mazzo.
+                        Gioca con le stesse informazioni che avrebbe una persona seduta al tavolo.
+                        <a href="/diario#patto-anti-cheat">Leggi il patto anti-cheat nel diario</a>.
+                    </div>
+                </div>
+
+                <div id="advanced-options" class="advanced-options hidden">
+                    <div class="form-group">
+                        <label for="ai-agent-select">Avversario (IA):</label>
+                        <select id="ai-agent-select">
+                            <option value="bc_model_pimc_belief_12x8" selected>IA consigliata</option>
+                            <option value="heuristic_v1">Euristica v1</option>
+                            <option value="random">Random</option>
+                        </select>
+                        <div id="ai-agent-description" class="help-text"></div>
+                    </div>
+                    <div class="form-group hidden" id="ai-model-group">
+                        <label for="ai-model-select">Modello (file .npz):</label>
+                        <select id="ai-model-select"></select>
+                        <div id="ai-model-description" class="help-text"></div>
+                    </div>
+                    <div id="advanced-options-loading" class="help-text hidden">Caricamento opzioni...</div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Spiegazione dettagliata: FUORI dal box del form, solo nella schermata iniziale -->
+        <div id="home-about" class="home-about panel">
+            <h3>Cos'è Briscola AI?</h3>
+            <p>
+                Un progetto didattico che costruisce, dall'inizio alla fine, un'IA capace di giocare a
+                Briscola: dal <strong>motore di regole puro</strong>, alla <strong>pipeline di dati</strong>,
+                fino all'<strong>allenamento degli agenti</strong> con self-play e reinforcement learning
+                (A2C) — scritti in NumPy, senza framework esterni.
+            </p>
+            <p>
+                L'avversario che affronti vede <strong>solo ciò che vedrebbe un giocatore leale</strong>
+                (nessuna carta nascosta): la sua forza viene dall'addestramento, non da scorciatoie.
+            </p>
+            <p class="home-github">
+                <a href="/diario">
+                    📖 Diario di bordo: la storia del progetto, raccontata semplice →
+                </a>
+            </p>
+            <p class="home-github">
+                <a href="https://github.com/ilCapo77/briscola.ai" target="_blank" rel="noopener">
+                    🔗 Codice, dettagli e documentazione su GitHub →
+                </a>
+            </p>
+        </div>
+
+        <!-- Game board -->
+        <div id="game-board" class="panel hidden">
+            <!-- Opponent area (top) -->
+            <div id="opponent-area" class="player-area opponent">
+                <div class="player-info">
+                    <span class="player-name" id="opponent-name">Avversario IA</span>
+                    <span class="player-points" id="opponent-points">0 punti</span>
+                    <button
+                        type="button"
+                        id="abandon-game"
+                        class="abandon-game-button"
+                        aria-label="Abbandona partita"
+                        title="Abbandona partita"
+                    >
+                        ×
+                    </button>
+                </div>
+                <div class="hand" id="opponent-hand"></div>
+            </div>
+
+            <!-- Table area (center) -->
+            <div id="table-area">
+                <div id="deck-area">
+                    <div id="deck" class="card card-back">
+                        <span id="deck-count">0</span>
+                    </div>
+                    <div id="trump-card" class="card-slot"></div>
+                </div>
+
+                <div id="table-center">
+                    <div id="table-cards"></div>
+                    <div id="turn-message" class="turn-message" role="status" aria-live="polite"></div>
+                </div>
+
+                <div id="trick-result" class="trick-result hidden" role="status" aria-live="polite"></div>
+            </div>
+
+            <!-- Player area (bottom) -->
+            <div id="player-area" class="player-area player">
+                <div class="player-info">
+                    <span class="player-name" id="player-name-display">Tu</span>
+                    <span class="player-points" id="player-points">0 punti</span>
+                    <span class="turn-indicator" id="turn-indicator">Tocca a te!</span>
+                </div>
+                <div class="hand" id="player-hand"></div>
+            </div>
+        </div>
+
+        <!-- Game result screen -->
+        <div id="game-result" class="panel hidden">
+            <h2>Partita terminata</h2>
+            <div id="result-content"></div>
+            <button id="new-game">Nuova partita</button>
+        </div>
+
+        <footer>
+            <span class="footer-text">Briscola AI — progetto didattico</span>
+            <a class="github-link" href="https://github.com/ilCapo77/briscola.ai" target="_blank"
+                rel="noopener" aria-label="Progetto su GitHub" title="Progetto su GitHub">
+                <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
+                        0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633
+                        17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809
+                        1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931
+                        0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301
+                        1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23
+                        3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807
+                        5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0
+                        .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+                <span>GitHub</span>
+            </a>
+            <span class="app-version">v__BRISCOLA_APP_VERSION__</span>
+        </footer>
+    </div>
+
+    <div id="startup-loading" class="startup-loading hidden" role="status" aria-live="polite" aria-hidden="true">
+        <div class="startup-loading-content">
+            <div class="startup-spinner" aria-hidden="true"></div>
+            <div class="startup-loading-title">Preparazione partita...</div>
+            <div class="startup-loading-detail" id="startup-loading-detail">Caricamento tavolo e IA</div>
+            <div class="startup-tip">
+                <div class="startup-tip-label">Regola della nonna</div>
+                <div class="startup-tip-text" id="startup-tip-text">
+                    Non inseguire tutti i punti: alcune prese si lasciano andare per vincerne una migliore dopo.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        id="abandon-modal"
+        class="modal-backdrop hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="abandon-modal-title"
+        aria-describedby="abandon-modal-body"
+        aria-hidden="true"
+    >
+        <div class="confirm-dialog">
+            <h2 id="abandon-modal-title">Abbandonare la partita?</h2>
+            <p id="abandon-modal-body">
+                La partita corrente verrà chiusa e tornerai alla schermata iniziale.
+            </p>
+            <div class="confirm-actions">
+                <button type="button" id="abandon-cancel" class="secondary-button">Continua a giocare</button>
+                <button type="button" id="abandon-confirm" class="danger-button">Abbandona</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modalità realtime decisa dal server: "polling" in cloud multi-replica (Redis attivo),
+        // "ws" in locale. Il default e' sovrascrivibile con ?polling=1 / ?ws=1 nell'URL.
+        window.__BRISCOLA_REALTIME_MODE__ = "__BRISCOLA_REALTIME_MODE_VALUE__";
+    </script>
+    <script src="/static/js/store.js?v=__BRISCOLA_ASSET_VERSION__"></script>
+    <script src="/static/js/api.js?v=__BRISCOLA_ASSET_VERSION__"></script>
+    <script src="/static/js/ui.js?v=__BRISCOLA_ASSET_VERSION__"></script>
+    <script src="/static/js/game.js?v=__BRISCOLA_ASSET_VERSION__"></script>
+</body>
+</html>

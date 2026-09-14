@@ -1,0 +1,1054 @@
+/* Stili principali per Briscola AI - Versione Semplificata */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #1a1a2e;
+    --card-color: #fff;
+    --text-color: #eee;
+    --text-muted: #aaa;
+    --border-color: #444;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --table-green: #16a34a;
+
+    /* Card dimensions maintaining 177x285 aspect ratio */
+    --card-width: 80px;
+    --card-height: calc(var(--card-width) * 285 / 177);
+    --card-back-image: url('/static/assets/cards/card_back.png');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: var(--text-color);
+    line-height: 1.5;
+    min-height: 100vh;
+    user-select: none;
+}
+
+body.starting-game,
+body.modal-open {
+    overflow: hidden;
+}
+
+input,
+select,
+textarea,
+.help-text,
+.anti-cheat-body {
+    user-select: text;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Panel styles */
+.panel {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 16px;
+}
+
+#game-setup h2 {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    background: #3f455d;
+    color: var(--text-color);
+}
+
+select {
+    color-scheme: dark;
+}
+
+select option {
+    background: #f8fafc;
+    color: #111827;
+}
+
+select option:checked,
+select option:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+#data-consent-group {
+    margin-top: 16px;
+}
+
+/* Consent checkbox: non vogliamo lo stile full-width dell'input text. */
+.consent-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.consent-row input[type="checkbox"] {
+    width: auto;
+    margin-top: 3px;
+    transform: scale(1.1);
+}
+
+.consent-label {
+    display: inline;
+    margin: 0;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.help-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+}
+
+#ai-model-description {
+    white-space: pre-wrap;
+}
+
+.default-opponent-summary {
+    margin: -2px 0 16px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.form-actions button {
+    flex: 1 1 180px;
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: none;
+}
+
+.secondary-button:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
+}
+
+.advanced-options {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.advanced-options .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.setup-error {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(231, 76, 60, 0.45);
+    border-radius: 8px;
+    background: rgba(231, 76, 60, 0.14);
+    color: #ffd8d2;
+    font-size: 0.92rem;
+}
+
+/* Callout evidenziato per la nota anti-cheat (didattica + leggibilità). */
+.anti-cheat-callout {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(52, 152, 219, 0.35);
+    background: rgba(52, 152, 219, 0.12);
+}
+
+.anti-cheat-title {
+    font-weight: 700;
+    color: #d7ecff;
+    margin-bottom: 6px;
+    letter-spacing: 0.2px;
+}
+
+.anti-cheat-body {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.35;
+}
+
+.anti-cheat-body a {
+    color: #7cc4f0;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.anti-cheat-body a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+button:disabled {
+    background: var(--border-color);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.danger-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.danger-button:hover {
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.38);
+}
+
+/* Dialog applicative: usate per conferme utente, non per messaggi di sistema. */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(8, 12, 24, 0.72);
+    backdrop-filter: blur(3px);
+}
+
+.confirm-dialog {
+    width: min(420px, 100%);
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background: rgba(35, 42, 66, 0.96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
+.confirm-dialog h2 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.confirm-dialog p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.confirm-actions button {
+    min-width: 150px;
+}
+
+/* Overlay mostrato mentre il backend crea la partita e il frontend prepara gli asset iniziali. */
+.startup-loading {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(8, 12, 24, 0.72);
+    backdrop-filter: blur(3px);
+}
+
+.startup-loading-content {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    width: min(380px, 100%);
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    background: rgba(18, 26, 44, 0.92);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+.startup-spinner {
+    width: 46px;
+    height: 46px;
+    border: 4px solid rgba(255, 255, 255, 0.22);
+    border-top-color: var(--secondary-color);
+    border-radius: 50%;
+    animation: startup-spin 0.85s linear infinite;
+}
+
+.startup-loading-title {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.startup-loading-detail {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.startup-tip {
+    width: 100%;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.startup-tip-label {
+    margin-bottom: 5px;
+    color: #d7ecff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.startup-tip-text {
+    color: var(--text-color);
+    font-size: 0.93rem;
+    line-height: 1.4;
+}
+
+@keyframes startup-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .startup-spinner {
+        animation-duration: 1.6s;
+    }
+}
+
+/* Game info */
+#game-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#game-id {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+#game-status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background: var(--warning-color);
+    color: #000;
+}
+
+#game-status.connected {
+    background: var(--success-color);
+}
+
+/* Stati connessione più granulari (debuggabilità UI) */
+#game-status.connecting {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+#game-status.reconnecting {
+    background: var(--warning-color);
+    color: #000;
+}
+
+#game-status.disconnected {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Game board layout */
+#game-board {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+}
+
+.abandon-game-button {
+    flex: 0 0 auto;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(0, 0, 0, 0.32);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    line-height: 1;
+    box-shadow: none;
+}
+
+.abandon-game-button:hover {
+    transform: none;
+    background: rgba(231, 76, 60, 0.78);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+/* Player areas */
+.player-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.player-info .player-name {
+    font-weight: 600;
+}
+
+.player-info .player-points {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+/* Fairness: i punti dell'avversario IA non sono mostrati durante la partita (il mazzo di prese
+   avversario non è pubblico; il punteggio finale resta nella schermata di risultato). */
+#opponent-points {
+    display: none;
+}
+
+.turn-indicator {
+    background: var(--accent-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    animation: pulse 1.5s infinite;
+    visibility: hidden;
+    /* usa visibility per mantenere lo spazio nel layout */
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Hand (cards) */
+.hand {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    min-height: calc(var(--card-height) + 10px);
+    padding: 8px;
+}
+
+/* Table area */
+#table-area {
+    position: relative;
+    /* `relative` rende l'area verde il contenitore di riferimento per l'overlay `.trick-result`
+       (assoluto): senza questo l'overlay si ancorava al viewport e poteva sovrapporsi ai nomi. */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(145deg, #15803d, #166534);
+    border-radius: 16px;
+    padding: 16px;
+    min-height: 200px;
+    gap: 16px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#deck-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#table-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#table-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    min-height: var(--card-height);
+}
+
+/* Turn message */
+.turn-message {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 200px;
+    /* Deve scavalcare l'etichetta "chi ha giocato" (`.card-label`, assoluta ~28px sotto la carta).
+       Tenere un margine costante qui (e NON usare padding su #table-cards) mantiene la posizione
+       della turn-message stabile sia col tavolo vuoto sia con una carta giocata. */
+    margin-top: 30px;
+}
+
+.turn-message.thinking {
+    animation: thinking 1s infinite;
+}
+
+@keyframes thinking {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Trick result overlay */
+.trick-result {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    /* ancorato in alto a destra DENTRO l'area verde (vedi #table-area position:relative),
+       così non si sovrappone ai riquadri scuri col nome dei giocatori. */
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color);
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card styles */
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    background-color: var(--card-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card.clickable {
+    cursor: pointer;
+}
+
+.card.clickable:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/*
+ * La classe `.disabled` viene usata dal renderer anche per carte "non interattive"
+ * fuori dalla mano (es. carte sul tavolo). Per mantenere l'area tavolo sempre ben
+ * leggibile, applichiamo l'effetto "disabilitato" solo alle carte nella mano del player.
+ */
+#player-hand .card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.card.revealed {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8);
+    animation: reveal-pulse 0.6s ease-in-out infinite;
+}
+
+.card.revealed-lookahead {
+    box-shadow: 0 0 20px 5px rgba(255, 140, 0, 0.85);
+    animation-name: reveal-pulse-lookahead;
+}
+
+.card.revealed-solver {
+    box-shadow: 0 0 20px 5px rgba(220, 38, 38, 0.9);
+    animation-name: reveal-pulse-solver;
+}
+
+.card.debug-peek-card {
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.85), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes reveal-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8);
+    }
+
+    50% {
+        box-shadow: 0 0 30px 8px rgba(255, 215, 0, 1);
+    }
+}
+
+@keyframes reveal-pulse-lookahead {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px 5px rgba(255, 140, 0, 0.85);
+    }
+
+    50% {
+        box-shadow: 0 0 30px 8px rgba(255, 140, 0, 1);
+    }
+}
+
+@keyframes reveal-pulse-solver {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px 5px rgba(220, 38, 38, 0.9);
+    }
+
+    50% {
+        box-shadow: 0 0 30px 8px rgba(248, 113, 113, 1);
+    }
+}
+
+.card.card-back {
+    background: var(--primary-color);
+    background-image: var(--card-back-image);
+    background-size: cover;
+    background-position: center;
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#deck-count {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: white;
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Mazzo vuoto: manteniamo il placeholder ma lo rendiamo uno "slot" vuoto (senza testo). */
+#deck.deck-empty {
+    background: rgba(0, 0, 0, 0.25);
+    background-image: none;
+    border: 2px dashed rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+#deck.deck-empty #deck-count {
+    display: none;
+}
+
+.card-slot {
+    width: var(--card-width);
+    height: var(--card-height);
+}
+
+/* Indicatore seme briscola (quando non mostriamo la carta) */
+.trump-suit-indicator {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* Table card wrapper */
+.table-card {
+    position: relative;
+}
+
+.table-card .card-label {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Card animation */
+@keyframes card-appear {
+    from {
+        transform: scale(0.8) translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.card-appear {
+    animation: card-appear 0.3s ease-out;
+}
+
+/* Game result */
+#game-result {
+    text-align: center;
+}
+
+#game-result h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+#result-content {
+    margin: 20px 0;
+    font-size: 1.1rem;
+}
+
+#result-content h3 {
+    color: var(--success-color);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+#result-content .scores {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 16px;
+}
+
+#result-content .score-item {
+    text-align: center;
+}
+
+#result-content .score-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 14px;
+    /* una sola riga (va a capo solo se lo schermo è troppo stretto) */
+    text-align: center;
+    padding: 12px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+/* Link al progetto su GitHub nel footer (icona SVG inline) */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.github-link:hover {
+    color: var(--text-color);
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Versione software nel footer */
+.app-version {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* Home: tagline (hero) sopra il box di setup */
+.home-hero {
+    text-align: center;
+    max-width: 640px;
+    margin: 4px auto 16px;
+}
+
+.home-tagline {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.home-tagline strong {
+    color: var(--secondary-color);
+}
+
+/* Home: spiegazione dettagliata, in un riquadro proprio FUORI dal box del form (.panel). */
+.home-about {
+    margin-top: 16px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.home-about h3 {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.home-about p {
+    margin-bottom: 8px;
+}
+
+.home-about strong {
+    color: var(--text-color);
+}
+
+.home-github a {
+    color: var(--secondary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.home-github a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    :root {
+        --card-width: 60px;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Footer compatto su mobile, per tenerlo su una sola riga. */
+    footer {
+        font-size: 0.72rem;
+        gap: 4px 8px;
+        padding: 10px 8px;
+    }
+
+    footer .app-version {
+        font-size: 0.68rem;
+    }
+
+    /* Su mobile mostriamo solo l'icona GitHub (la parola occupa spazio prezioso). */
+    footer .github-link span {
+        display: none;
+    }
+
+    .confirm-actions {
+        flex-direction: column;
+    }
+
+    .confirm-actions button {
+        width: 100%;
+    }
+
+    #table-area {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    #deck-area {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .turn-message {
+        min-width: auto;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* In partita puntiamo a far stare la UI nel viewport comprimendo spazi (carte, gap, padding).
+       NON forziamo `overflow: hidden`: usiamo `min-height: 100dvh`, così se lo schermo è troppo
+       basso (device piccoli, landscape, tastiera aperta) la pagina torna a scrollare normalmente
+       invece di sovrapporre gli elementi. Il footer resta visibile. Applicato solo con
+       `body.playing`, così setup e risultato restano scrollabili. */
+    body.playing .container {
+        min-height: 100dvh;
+        /* dvh: tiene conto della barra dinamica del browser mobile (a differenza di vh). */
+        padding: 8px;
+    }
+
+    body.playing header {
+        margin-bottom: 6px;
+        padding: 4px 0;
+    }
+
+    body.playing #game-board {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    /* Avversario e giocatore a dimensione naturale; il tavolo verde assorbe lo spazio elastico. */
+    body.playing .player-area {
+        flex: 0 0 auto;
+        gap: 4px;
+    }
+
+    body.playing .player-info {
+        padding: 4px 10px;
+    }
+
+    body.playing #table-area {
+        flex: 1 1 auto;
+        min-height: 0;
+        /* override del min-height:200px desktop */
+        justify-content: center;
+        /* centra verticalmente il gruppo (mazzo + carte giocate) nell'area verde */
+        gap: 10px;
+    }
+
+    /* Carte giocate centrate verticalmente nell'area verde. */
+    body.playing #table-center {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+
+    body.playing .hand {
+        min-height: 0;
+        padding: 2px;
+        gap: 6px;
+    }
+
+    /* NB: #table-cards mantiene il suo min-height = card-height anche con tavolo vuoto, così la
+       posizione della turn-message NON cambia tra "tavolo vuoto" e "carta giocata" (altrimenti il
+       ballon "sta pensando" appariva spostato). Anche il margin-top resta quello base (30px), che
+       scavalca l'etichetta "chi ha giocato". */
+}

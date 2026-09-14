@@ -1,0 +1,79 @@
+# CI del progetto: replica il quality gate documentato in AGENTS.md
+# (ruff format/check, mypy, docs-check, pytest) su ogni push/PR, così nessun commit
+# può arrivare su GitHub senza essere stato eseguito e testato.
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # `contents: write` serve solo allo step che aggiorna il badge coverage nel README.
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Installa uv (con cache)
+        # setup-uv v8 non pubblica piu' il tag major flottante (`v8`): va pinnata la versione completa.
+        uses: astral-sh/setup-uv@v8.2.0
+        with:
+          python-version: "3.14"
+          enable-cache: true
+
+      - name: Installa dipendenze (lockfile + extra dev)
+        run: uv sync --extra dev
+
+      - name: Ruff (formato)
+        run: uv run ruff format --check src tests scripts
+
+      - name: Ruff (lint)
+        run: uv run ruff check src tests scripts
+
+      - name: Mypy
+        run: uv run mypy src
+
+      - name: Documentazione ed evidenze
+        run: make docs-check
+
+      - name: Pytest (con coverage)
+        run: uv run pytest --cov=briscola_ai --cov-report=term-missing:skip-covered
+
+      - name: Riassunto coverage nel job summary
+        if: always()
+        run: |
+          if [ -f .coverage ]; then
+            echo '## Coverage' >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            uv run coverage report --format=total >> "$GITHUB_STEP_SUMMARY" || true
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # Il badge coverage nel README si aggiorna da solo: solo sui push a master (mai
+      # dalle PR, che possono arrivare da fork senza permessi di scrittura) e committa
+      # soltanto se la percentuale è cambiata. I push fatti col GITHUB_TOKEN di default
+      # non ri-triggerano i workflow, quindi non c'è rischio di loop.
+      - name: Aggiorna badge coverage nel README
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          total=$(uv run coverage report --format=total)
+          if [ "$total" -ge 90 ]; then color=brightgreen
+          elif [ "$total" -ge 75 ]; then color=green
+          elif [ "$total" -ge 60 ]; then color=yellow
+          else color=red
+          fi
+          sed -i -E "s|coverage-[0-9]+%25-[a-z]+|coverage-${total}%25-${color}|" README.md
+          if git diff --quiet README.md; then
+            echo "Badge già aggiornato (${total}%)."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs(readme): aggiorna badge coverage a ${total}%"
+          git pull --rebase origin master
+          git push origin master
