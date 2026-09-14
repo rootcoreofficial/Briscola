@@ -32,7 +32,7 @@
     // backend pubblico. Nel browser normale il path relativo evita CORS e conserva
     // la possibilita' di eseguire tutto in locale con `briscola-server`.
     const REPLAY_ADVICE_URL = window.Capacitor?.isNativePlatform?.()
-        ? 'https://ai.briscola.dev/api/replay/advice'
+        ? 'https://briscola-m2lw.onrender.com/api/replay/advice'
         : '/api/replay/advice';
 
     /** Tutta la partita è una registrazione locale: niente localStorage e niente persistenza. */
